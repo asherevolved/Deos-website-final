@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+/* ── Google Fonts (loaded via index.html for performance) ── */
+/* Fjalla One — condensed bold display (main headings)
+   Instrument Serif — elegant serif accent
+   Inria Serif — readable serif for emphasis
+   Inter — clean body text
+   Caveat — handwritten accent */
+
+/* ── Theme configuration ── */
+@theme {
+  --color-primary: #EAB308;
+  --color-bg-deep: #050505;
+  --color-bg-dark: #0A0A0A;
+  --color-card-dark: #121212;
+  --color-accent-yellow: #FACC15;
+  --color-cream: #F5F0E8;
+  --color-peach: #F4978E;
+
+  --font-display: 'Fjalla One', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-hand: 'Caveat', cursive;
+  --font-serif: 'Instrument Serif', serif;
+  --font-serif-alt: 'Inria Serif', serif;
+}
+
+/* ── Base styles ── */
+html {
+  scroll-behavior: auto;
+}
+
+/* Lenis smooth scroll integration */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+body {
+  background-color: var(--color-bg-deep);
+  color: #ffffff;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* GPU compositing hints for smoother animations */
+.gsap-pin-spacer,
+[style*="will-change"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: #000;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ── Text outline utility ── */
+.text-outline {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.5);
+  color: transparent;
+}
+
+.text-outline-thick {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.8);
+  color: transparent;
+}
+
+/* ── Noise/grain overlay ── */
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Marquee animation ── */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* ── Floating animation ── */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 7s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+/* ── Particles ── */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.5);
+  }
+}
+
+/* ── Horizontal line grow ── */
+.line-grow {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* ── Smooth scroll indicator pulse ── */
+@keyframes scrollPulse {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.animate-scroll-pulse {
+  animation: scrollPulse 2s ease-in-out infinite;
+}
