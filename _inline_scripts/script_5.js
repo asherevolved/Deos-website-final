@@ -1,0 +1,1 @@
+[{"hash":"72rtr7","mediaQuery":"(min-width: 1200px)"},{"hash":"1hgsoa5","mediaQuery":"(min-width: 810px) and (max-width: 1199.98px)"},{"hash":"16fka8f","mediaQuery":"(max-width: 809.98px)"},{"hash":"11yq8qm","mediaQuery":"(min-width: 1200px)"},{"hash":"1dah740","mediaQuery":"(min-width: 810px) and (max-width: 1199.98px)"},{"hash":"1he3p3k","mediaQuery":"(max-width: 809.98px)"}]
