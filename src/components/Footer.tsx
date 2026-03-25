@@ -25,17 +25,16 @@ export default function Footer() {
                 }
             );
 
-            // CTA text — clip reveal
+            // CTA text — fade + slide up
             gsap.fromTo(
                 ctaRef.current,
-                { y: 120, opacity: 0, clipPath: 'inset(0 0 100% 0)' },
+                { y: 40, opacity: 0 },
                 {
                     y: 0,
                     opacity: 1,
-                    clipPath: 'inset(0 0 0% 0)',
-                    duration: 1.5,
-                    ease: 'power4.out',
-                    scrollTrigger: { trigger: sectionRef.current, start: 'top 70%' },
+                    duration: 1.2,
+                    ease: 'power3.out',
+                    scrollTrigger: { trigger: sectionRef.current, start: 'top 85%', toggleActions: 'play none none none' },
                 }
             );
 
@@ -89,22 +88,29 @@ export default function Footer() {
             {/* Top line */}
             <div ref={topLineRef} className="h-[2px] bg-gradient-to-r from-transparent via-gray-800 to-transparent mx-5 md:mx-12 lg:mx-24 mb-16 md:mb-24 origin-center" />
 
+            {/* CTA label — constrained */}
+            <div className="px-5 md:px-12 lg:px-24 mb-6">
+                <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block">
+                    Let's Work Together
+                </span>
+            </div>
+
+            {/* Full-bleed heading so large text is never clipped */}
+            <div className="pl-5 md:pl-12 lg:pl-24 mb-6">
+                <h2
+                    ref={ctaRef}
+                    className="text-[14vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw] uppercase leading-none tracking-tighter"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                >
+                    <span className="text-white block pb-2">Get In</span>
+                    <span className="text-white block pb-2">Touch</span>
+                </h2>
+            </div>
+
+            {/* Sub-text + rest of footer — constrained */}
             <div className="px-5 md:px-12 lg:px-24 max-w-7xl mx-auto">
-                {/* Main CTA */}
                 <div className="mb-24">
-                    <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-8">
-                        Let's Work Together
-                    </span>
-                    <h2
-                        ref={ctaRef}
-                        className="text-[14vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw] uppercase leading-[0.8] tracking-tighter"
-                        style={{ fontFamily: 'var(--font-display)' }}
-                    >
-                        <span className="text-white">Get In</span>
-                        <br />
-                        <span className="text-white">Touch</span>
-                    </h2>
-                    <p className="mt-8 text-sm text-gray-500 max-w-md leading-relaxed font-medium"
+                    <p className="text-sm text-gray-500 max-w-md leading-relaxed font-medium"
                         style={{ fontFamily: 'var(--font-body)' }}
                     >
                         Ready to create something extraordinary? Let's talk about your next project.

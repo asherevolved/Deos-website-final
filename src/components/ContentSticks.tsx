@@ -18,32 +18,32 @@ export default function ContentSticks() {
         const ctx = gsap.context(() => {
             const lines = [line1.current, line2.current, line3.current, line4.current];
 
-            // Each line reveals with scroll scrub
+            // Each line slides up and fades in on scroll
             lines.forEach((line, i) => {
                 gsap.fromTo(
                     line,
-                    { y: 120, opacity: 0, clipPath: 'inset(0 0 100% 0)' },
+                    { y: 40, opacity: 0 },
                     {
                         y: 0,
                         opacity: 1,
-                        clipPath: 'inset(0 0 0% 0)',
-                        ease: 'none',
+                        duration: 0.9,
+                        ease: 'power3.out',
+                        delay: i * 0.12,
                         scrollTrigger: {
                             trigger: sectionRef.current,
-                            start: `${15 + i * 8}% bottom`,
-                            end: `${30 + i * 8}% bottom`,
-                            scrub: 1,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none',
                         },
                     }
                 );
 
-                // Different parallax speeds
+                // Subtle parallax on scroll
                 gsap.to(line, {
-                    y: (i % 2 === 0 ? -30 : 30) * (0.5 + i * 0.15),
+                    y: (i % 2 === 0 ? -20 : 20) * (0.5 + i * 0.1),
                     ease: 'none',
                     scrollTrigger: {
                         trigger: sectionRef.current,
-                        start: '30% bottom',
+                        start: 'top bottom',
                         end: 'bottom top',
                         scrub: 2,
                     },
@@ -53,7 +53,7 @@ export default function ContentSticks() {
             // Handwritten text bounce
             gsap.fromTo(
                 handRef.current,
-                { y: 50, opacity: 0, rotate: -15, scale: 0.8 },
+                { y: 40, opacity: 0, rotate: -15, scale: 0.8 },
                 {
                     y: 0,
                     opacity: 1,
@@ -61,20 +61,20 @@ export default function ContentSticks() {
                     scale: 1,
                     duration: 1.2,
                     ease: 'back.out(3)',
-                    scrollTrigger: { trigger: sectionRef.current, start: '25% bottom' },
+                    scrollTrigger: { trigger: sectionRef.current, start: 'top 85%' },
                 }
             );
 
             // Description
             gsap.fromTo(
                 descRef.current,
-                { x: 80, opacity: 0 },
+                { x: 60, opacity: 0 },
                 {
                     x: 0,
                     opacity: 1,
                     duration: 1.2,
                     ease: 'power3.out',
-                    scrollTrigger: { trigger: descRef.current, start: 'top 80%' },
+                    scrollTrigger: { trigger: descRef.current, start: 'top 90%' },
                 }
             );
 
@@ -101,38 +101,42 @@ export default function ContentSticks() {
     return (
         <section
             ref={sectionRef}
-            className="py-24 md:py-40 lg:py-64 px-5 md:px-12 lg:px-24 bg-[var(--color-bg-deep)] overflow-hidden relative grain-overlay"
+            className="py-24 md:py-40 lg:py-64 bg-[var(--color-bg-deep)] relative grain-overlay"
         >
             {/* Subtle glow */}
             <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[var(--color-primary)]/3 rounded-full blur-[300px] pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto relative z-[2]">
-                <div className="flex flex-col items-end text-right relative">
-                    <span
-                        ref={handRef}
-                        className="block text-3xl md:text-5xl lg:text-7xl text-[var(--color-primary)] -rotate-6 mb-6 md:mb-8 opacity-0"
-                        style={{ fontFamily: 'var(--font-hand)', fontWeight: 700 }}
-                    >
-                        Make it stick!
-                    </span>
+            {/* Handwritten label — constrained */}
+            <div className="relative z-[2] px-5 md:px-12 lg:px-24 flex justify-end mb-4 md:mb-6">
+                <span
+                    ref={handRef}
+                    className="block text-3xl md:text-5xl lg:text-7xl text-[var(--color-primary)] -rotate-6 opacity-0"
+                    style={{ fontFamily: 'var(--font-hand)', fontWeight: 700 }}
+                >
+                    Make it stick!
+                </span>
+            </div>
 
-                    <h2 className="uppercase leading-[0.75] text-white overflow-visible"
-                        style={{ fontFamily: 'var(--font-display)' }}
-                    >
-                        <span ref={line1} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] tracking-tighter">Content</span>
-                        <span ref={line2} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] text-outline-thick tracking-tighter">That Sticks</span>
-                        <span ref={line3} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] tracking-tighter">Stories</span>
-                        <span ref={line4} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] text-outline-thick tracking-tighter">That Stays</span>
-                    </h2>
-                </div>
+            {/* Full-bleed headline — no max-width so text is never clipped */}
+            <div className="relative z-[2] w-full text-right pr-5 md:pr-12 lg:pr-24">
+                <h2
+                    className="uppercase leading-none text-white"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                >
+                    <span ref={line1} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] tracking-tighter pb-2">Content</span>
+                    <span ref={line2} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] text-outline-thick tracking-tighter pb-2">That Sticks</span>
+                    <span ref={line3} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] tracking-tighter pb-2">Stories</span>
+                    <span ref={line4} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] text-outline-thick tracking-tighter pb-2">That Stay</span>
+                </h2>
+            </div>
 
-                <div ref={descRef} className="mt-12 md:mt-20 flex justify-start">
-                    <div className="max-w-md border-l-[3px] border-[var(--color-primary)] pl-5 md:pl-6">
-                        <p className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-gray-400 leading-relaxed font-bold">
-                            CONTENT TODAY IS OFTEN TIED TO INDIVIDUALS. DEOS ORIGINALS TAKES A DIFFERENT APPROACH.
-                            WE CREATE BRANDS THAT STAND ON THEIR OWN, BEYOND JUST PERSONALITIES.
-                        </p>
-                    </div>
+            {/* Description — constrained */}
+            <div ref={descRef} className="relative z-[2] px-5 md:px-12 lg:px-24 mt-12 md:mt-20 flex justify-start">
+                <div className="max-w-md border-l-[3px] border-[var(--color-primary)] pl-5 md:pl-6">
+                    <p className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-gray-400 leading-relaxed font-bold">
+                        CONTENT TODAY IS OFTEN TIED TO INDIVIDUALS. DEOS ORIGINALS TAKES A DIFFERENT APPROACH.
+                        WE CREATE BRANDS THAT STAND ON THEIR OWN, BEYOND JUST PERSONALITIES.
+                    </p>
                 </div>
             </div>
 

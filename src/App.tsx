@@ -10,6 +10,7 @@ import Projects from './components/Projects';
 import ContentSticks from './components/ContentSticks';
 import ImageCollage from './components/ImageCollage';
 import Team from './components/Team';
+import InstagramFeed from './components/InstagramFeed';
 import Footer from './components/Footer';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <StickyFeatures />
       <Projects />
       <ContentSticks />
+      <InstagramFeed />
       <Team />
       <ImageCollage />
       <Footer />
