@@ -12,8 +12,8 @@ const clients = [
   { src: '/clients/Pataka Logo.png', alt: 'Pataka' },
   { src: '/clients/SVJ.png', alt: 'SVJ' },
   { src: '/clients/The pearl.png', alt: 'The Pearl' },
-  { src: '/clients/WhatsApp_Image_2026-03-24_at_4.11.56_PM-removebg-preview.png', alt: 'Client' },
-  { src: '/clients/images-removebg-preview.png', alt: 'Client' },
+  { src: '/clients/WhatsApp_Image_2026-03-24_at_4.11.56_PM-removebg-preview.png', alt: 'Client 1' },
+  { src: '/clients/images-removebg-preview.png', alt: 'Client 2' },
   { src: '/clients/sunburnunion_vel5hwh0mj.png', alt: 'Sunburn Union' },
 ];
 
@@ -74,36 +74,19 @@ export default function ClientsSection() {
           style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }}
         />
 
-        {/* Row 1 — forward */}
-        <InfiniteSlider gap={48} speed={60} speedOnHover={30} className="mb-6">
+        <InfiniteSlider gap={48} speed={60} speedOnHover={30}>
           {clients.map((client) => (
             <div
-              key={client.alt + '-1'}
-              className="flex items-center justify-center px-6 py-4 border border-gray-800/60 bg-[var(--color-card-dark)] hover:border-[var(--color-primary)]/40 transition-colors duration-300"
-              style={{ minWidth: '180px', height: '80px' }}
+              key={client.alt}
+              className="flex items-center justify-center px-6 py-4"
+              style={{ minWidth: client.src === '/clients/images-removebg-preview.png' ? '300px' : '260px', height: '120px' }}
             >
               <img
                 src={client.src}
                 alt={client.alt}
-                className="max-h-10 max-w-[140px] w-auto object-contain select-none pointer-events-none"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </InfiniteSlider>
-
-        {/* Row 2 — reverse */}
-        <InfiniteSlider gap={48} speed={70} speedOnHover={30} reverse className="mb-0">
-          {[...clients].reverse().map((client) => (
-            <div
-              key={client.alt + '-2'}
-              className="flex items-center justify-center px-6 py-4 border border-gray-800/60 bg-[var(--color-card-dark)] hover:border-[var(--color-primary)]/40 transition-colors duration-300"
-              style={{ minWidth: '180px', height: '80px' }}
-            >
-              <img
-                src={client.src}
-                alt={client.alt}
-                className="max-h-10 max-w-[140px] w-auto object-contain select-none pointer-events-none"
+                className={client.src === '/clients/images-removebg-preview.png'
+                  ? 'w-[280px] h-[108px] object-contain select-none pointer-events-none'
+                  : 'w-[220px] h-[84px] object-contain select-none pointer-events-none'}
                 loading="lazy"
               />
             </div>

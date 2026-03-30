@@ -12,9 +12,17 @@ const clients = [
     { src: '/clients/Pataka Logo.png', alt: 'Pataka' },
     { src: '/clients/SVJ.png', alt: 'SVJ' },
     { src: '/clients/The pearl.png', alt: 'The Pearl' },
-    { src: '/clients/WhatsApp_Image_2026-03-24_at_4.11.56_PM-removebg-preview.png', alt: 'Client' },
-    { src: '/clients/images-removebg-preview.png', alt: 'Client' },
+    { src: '/clients/WhatsApp_Image_2026-03-24_at_4.11.56_PM-removebg-preview.png', alt: 'Client 1' },
+    { src: '/clients/images-removebg-preview.png', alt: 'Client 2' },
     { src: '/clients/sunburnunion_vel5hwh0mj.png', alt: 'Sunburn Union' },
+];
+
+const presentClients = [
+    { src: '/clients/Color Logo.png', alt: 'Color Logo' },
+    { src: '/clients/ElanBar-03.png', alt: 'Elan Bar' },
+    { src: '/clients/Gokulam Logo 1 orange.png', alt: 'Gokulam' },
+    { src: '/clients/RoyalBluColor.png', alt: 'Royal Blu' },
+    { src: '/clients/SMSL_blackwhite_logo.png', alt: 'SMSL' },
 ];
 
 export default function Projects() {
@@ -76,32 +84,36 @@ export default function Projects() {
     }, [isMobile]);
 
     /* ── Logo card shared render ── */
-    const LogoCard = ({ client, size = 'lg' }: { client: typeof clients[0]; size?: 'sm' | 'lg' }) => (
-        <div
-            className="flex items-center justify-center border border-gray-700/60 bg-[#0d0d0d] hover:border-[var(--color-primary)]/50 transition-colors duration-300"
-            style={{
-                minWidth: size === 'lg' ? '240px' : '180px',
-                height: size === 'lg' ? '120px' : '90px',
-                padding: size === 'lg' ? '20px 28px' : '14px 20px',
-            }}
-        >
-            <img
-                src={client.src}
-                alt={client.alt}
-                className="w-auto object-contain select-none pointer-events-none"
+    const LogoCard = ({ client, size = 'lg' }: { client: typeof clients[0]; size?: 'sm' | 'lg' }) => {
+        const isMumbaiChai = client.src === '/clients/images-removebg-preview.png';
+
+        return (
+            <div
+                className="flex items-center justify-center"
                 style={{
-                    maxHeight: size === 'lg' ? '72px' : '52px',
-                    maxWidth: size === 'lg' ? '180px' : '140px',
+                    minWidth: isMumbaiChai ? (size === 'lg' ? '340px' : '300px') : (size === 'lg' ? '300px' : '260px'),
+                    height: size === 'lg' ? '140px' : '120px',
                 }}
-                loading="lazy"
-            />
-        </div>
-    );
+            >
+                <img
+                    src={client.src}
+                    alt={client.alt}
+                    className={isMumbaiChai
+                        ? 'w-[280px] h-[108px] object-contain select-none pointer-events-none'
+                        : 'w-[220px] h-[84px] object-contain select-none pointer-events-none'}
+                    style={{
+                        filter: 'brightness(1.15) contrast(1.15)'
+                    }}
+                    loading="lazy"
+                />
+            </div>
+        );
+    };
 
     /* ── Mobile layout ── */
     if (isMobile) {
         return (
-            <div ref={wrapperRef} id="projects" className="bg-[var(--color-bg-deep)] py-24 px-5">
+            <div ref={wrapperRef} id="projects" className="bg-[var(--color-bg-deep)] py-32 px-5">
                 <div className="mb-10">
                     <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-4">
                         Our Portfolio
@@ -116,18 +128,34 @@ export default function Projects() {
                     <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
                 </div>
 
-                <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10" style={{ background: 'linear-gradient(to right, var(--color-bg-deep), transparent)' }} />
-                    <div className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10" style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }} />
-                    <InfiniteSlider gap={16} speed={50} speedOnHover={20}>
-                        {clients.map((c) => <LogoCard key={c.alt} client={c} size="sm" />)}
-                    </InfiniteSlider>
-                    <div className="mt-4">
-                        <InfiniteSlider gap={16} speed={60} speedOnHover={20} reverse>
-                            {[...clients].reverse().map((c) => <LogoCard key={c.alt + '-r'} client={c} size="sm" />)}
+                    <div className="relative mb-16">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10" style={{ background: 'linear-gradient(to right, var(--color-bg-deep), transparent)' }} />
+                        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10" style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }} />
+                        <InfiniteSlider gap={16} speed={50} speedOnHover={20}>
+                            {clients.map((c) => <LogoCard key={c.alt} client={c} size="sm" />)}
                         </InfiniteSlider>
                     </div>
-                </div>
+
+                    <div className="mb-6 mt-8">
+                        <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-4">
+                            Current Work
+                        </span>
+                        <h3
+                            className="text-[10vw] uppercase text-white leading-[0.85] tracking-tighter mb-6"
+                            style={{ fontFamily: 'var(--font-display)', fontWeight: 900 }}
+                        >
+                            Present Clientele
+                        </h3>
+                        <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
+                    </div>
+
+                    <div className="relative">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10" style={{ background: 'linear-gradient(to right, var(--color-bg-deep), transparent)' }} />
+                        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10" style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }} />
+                        <InfiniteSlider gap={16} speed={50} speedOnHover={20}>
+                            {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} size="sm" />)}
+                        </InfiniteSlider>
+                    </div>
             </div>
         );
     }
@@ -168,47 +196,62 @@ export default function Projects() {
             {/* Revealed: Clients We Worked With */}
             <div
                 ref={revealRef}
-                className="absolute inset-0 z-30 flex flex-col justify-center opacity-0 px-8 md:px-14 lg:px-20 overflow-hidden"
+                className="absolute inset-0 z-30 flex flex-col justify-start pt-28 md:pt-32 lg:pt-32 opacity-0 px-8 md:px-14 lg:px-20 overflow-visible"
             >
                 <div className="max-w-7xl w-full mx-auto">
                     {/* Header */}
-                    <div className="flex items-end justify-between mb-10">
+                    <div className="flex items-end justify-between mb-4">
                         <div>
-                            <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-3">
+                            <span className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-1">
                                 Our Portfolio
                             </span>
                             <h2
-                                className="text-4xl md:text-6xl lg:text-7xl uppercase text-white leading-[0.85] tracking-tighter"
+                                className="text-3xl md:text-4xl lg:text-5xl uppercase text-white leading-[0.85] tracking-tighter"
                                 style={{ fontFamily: 'var(--font-display)', fontWeight: 900 }}
                             >
                                 Clients We{' '}
                                 <span className="text-outline-thick">Worked</span> With
                             </h2>
                         </div>
-                        <span className="text-[11px] uppercase tracking-[0.3em] text-gray-500 font-bold mb-2">
-                            {String(clients.length).padStart(2, '0')} Clients
-                        </span>
                     </div>
 
                     {/* Divider */}
-                    <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent mb-10" />
+                    <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent mb-6" />
 
-                    {/* Row 1 — forward */}
-                    <div className="relative mb-4">
+                    {/* Single logo row */}
+                    <div className="relative mb-8">
                         <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10" style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
                         <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10" style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
                         <InfiniteSlider gap={20} speed={60} speedOnHover={25}>
-                            {clients.map((c) => <LogoCard key={c.alt} client={c} size="lg" />)}
+                            {clients.map((c) => <LogoCard key={c.alt} client={c} size="sm" />)}
                         </InfiniteSlider>
                     </div>
 
-                    {/* Row 2 — reverse */}
-                    <div className="relative">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10" style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
-                        <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10" style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
-                        <InfiniteSlider gap={20} speed={70} speedOnHover={25} reverse>
-                            {[...clients].reverse().map((c) => <LogoCard key={c.alt + '-r'} client={c} size="lg" />)}
-                        </InfiniteSlider>
+                    {/* Present Clientele — same style as above */}
+                    <div className="max-w-7xl w-full mx-auto">
+                        <div className="flex items-end justify-between mb-4">
+                            <div>
+                                <span className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-1">
+                                    Current Work
+                                </span>
+                                <h3
+                                    className="text-2xl md:text-3xl lg:text-4xl uppercase text-white leading-[0.9] tracking-tighter"
+                                    style={{ fontFamily: 'var(--font-display)', fontWeight: 900 }}
+                                >
+                                    Present Clientele
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent mb-6" />
+
+                        <div className="relative">
+                            <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10" style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
+                            <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10" style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
+                            <InfiniteSlider gap={24} speed={55} speedOnHover={25}>
+                                {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} size="sm" />)}
+                            </InfiniteSlider>
+                        </div>
                     </div>
                 </div>
             </div>
