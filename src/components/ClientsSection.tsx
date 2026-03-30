@@ -79,14 +79,24 @@ export default function ClientsSection() {
             <div
               key={client.alt}
               className="flex items-center justify-center px-6 py-4"
-              style={{ minWidth: client.src === '/clients/images-removebg-preview.png' ? '300px' : '260px', height: '120px' }}
+              style={{
+                minWidth: client.src === '/clients/SVJ.png'
+                  ? '320px'
+                  : client.src === '/clients/images-removebg-preview.png'
+                  ? '300px'
+                  : '260px',
+                height: '120px'
+              }}
             >
               <img
                 src={client.src}
                 alt={client.alt}
-                className={client.src === '/clients/images-removebg-preview.png'
+                className={client.src === '/clients/SVJ.png'
+                  ? 'w-[300px] h-[116px] object-contain select-none pointer-events-none'
+                  : client.src === '/clients/images-removebg-preview.png'
                   ? 'w-[280px] h-[108px] object-contain select-none pointer-events-none'
                   : 'w-[220px] h-[84px] object-contain select-none pointer-events-none'}
+                style={{ filter: client.src === '/clients/SVJ.png' ? 'brightness(0) invert(1)' : 'none' }}
                 loading="lazy"
               />
             </div>

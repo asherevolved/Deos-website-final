@@ -172,12 +172,21 @@ export default function Footer() {
                             </span>
                         </div>
                         <div>
+                            <span className="text-[9px] uppercase tracking-[0.25em] text-gray-500 font-bold block mb-2">Phone</span>
+                            <a
+                                className="text-white hover:text-[var(--color-primary)] transition-colors text-sm font-bold"
+                                href="tel:+919110851733"
+                            >
+                                +91 9110851733 / +91 78925 72758
+                            </a>
+                        </div>
+                        <div>
                             <span className="text-[9px] uppercase tracking-[0.25em] text-gray-500 font-bold block mb-2">Email</span>
                             <a
                                 className="text-white hover:text-[var(--color-primary)] transition-colors text-sm font-bold lowercase"
-                                href="mailto:info@deosoriginals.com"
+                                href="mailto:deosoriginals@gmail.com"
                             >
-                                info@deosoriginals.com
+                                deosoriginals@gmail.com
                             </a>
                         </div>
                     </div>

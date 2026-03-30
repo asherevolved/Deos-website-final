@@ -80,7 +80,7 @@ export default function Navbar() {
                     </div>
 
                     <a
-                        href="mailto:info@deosoriginals.com"
+                        href="mailto:deosoriginals@gmail.com"
                         className="hidden md:flex items-center gap-2 border border-gray-700 text-white px-5 py-2 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-[var(--color-primary)] hover:text-black hover:border-[var(--color-primary)] transition-all duration-500"
                     >
                         Get in Touch
@@ -132,7 +132,7 @@ export default function Navbar() {
                         </button>
                     ))}
                     <a
-                        href="mailto:info@deosoriginals.com"
+                        href="mailto:deosoriginals@gmail.com"
                         className="mt-4 border border-[var(--color-primary)] text-[var(--color-primary)] px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] hover:bg-[var(--color-primary)] hover:text-black transition-all duration-500"
                         style={{
                             opacity: menuOpen ? 1 : 0,

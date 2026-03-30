@@ -10,27 +10,16 @@ gsap.registerPlugin(ScrollTrigger);
    Avoids the problem of skipping cards during horizontal scroll
 */
 
+const blankPhoto = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200"><rect width="100%" height="100%" fill="%23000000"/></svg>';
+
 const teamMembers = [
-    {
-        name: 'Aavish Garg',
-        role: 'Founder & CEO',
-        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA_oQzjrPEM7udGXgv9bc_ezzEYvQseRD5gEuTN363YzKGHPtWWNNEwd4ndvWlWBW1PimpJ-OjuN8LU85JK_RjFmIelFVGLbfIoOQdb4UWLN9jHA0CsENwGfqKCtR5g0U5XPtYoL9J3ZxYjWv6M4gBI6MgVytbDLy_-i-3dXrqaXWl6-PO0UDO81K7E-rkrig9OeYiLNjiEokBoZvEOJzJvrnW2mLCjtWYB9LGUdK7JY4PnVDzW6q-ndmEluxsc6etXJvY5DSNgwb0',
-    },
-    {
-        name: 'Amaan Andicot',
-        role: 'Creative Director',
-        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA1aZnifu1GBBVqobArxz5GW4YxHnlkNuSltzguZ9GenLAuFQMXKiQEnLZ7Bxde29AFdQaRdJ3fkN6CDF486PT1qO_IFkKYnCcjrgJeSC5wm85NxPOOCu6fBrZSvqVwkr2olP6XINxpI1YYEX803cE3QrvrKBsLv7oXJdGw5MqC02lTNQ4MjrV0yxGNti5GOXMm27SgSnpdM494r1QgrKUKm5OoKDyItOvP2I-Ee5ejLjPPIhHYBhTdtJRJg5PJQvZ8BbjoKFx-bWk',
-    },
-    {
-        name: 'Amrita M.',
-        role: 'Head of Strategy',
-        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBB7QacL1Ob3MWDwryHXCvYzEYhiN2uqMTtJaOd85c1GC2iGroadzhNiSWxjeSTWCdODRSSyR14zKpgrTbPe1Fv34Qs59w23pwzlXmYZvbQvyDY4CDhU87JQ3PAGCTAPYMfVNzmbli8bvRW4W9zSGLtYi3DI5Lb-B3xSomxihvDqXpWu0LLoOx3oWVrJCv7v9yB4DH4xfXcbx4_-Z613XJjF9ctxrGzTgvj4B5Zl3MmM_4Z3vgmxeLbSBx4VOcLVW5_xyb_1P-XL-w',
-    },
-    {
-        name: 'Arnab Dewan',
-        role: 'Lead Developer',
-        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAdliamRHgZVXidWmd8tAhAZY-xzMjvYjBmIOsBcaLkfcKiZkcH9c11mhMFwDnJnXAowwgCrTfc06miyq2tNiTqFUPUvN-uLqHQa6omNAx_cD8kBmBDrSOVBkcvk2fmxpD9I6KTc2Vd-fmM9-zQ3v6Igb40Ut0w2WkpTkPt8TpUfn1cafNS3HRi5uhrNDDyxc8FYz_CN13EwfXv9c1r22dY6s3eSGkGvHpIF_9C3fiEW8raBqazpDx-eMaTJT2JlrQ-7NnrVCyPHcU',
-    },
+    { name: 'Ashwij Donthi', role: 'Team Member', img: blankPhoto },
+    { name: 'Thanush S Gowda', role: 'Team Member', img: blankPhoto },
+    { name: 'Hemanth Rakki', role: 'Team Member', img: blankPhoto },
+    { name: 'Sandesh Shaiva', role: 'Team Member', img: blankPhoto },
+    { name: 'Nayana Rahuth', role: 'Team Member', img: blankPhoto },
+    { name: 'Asher Shalom', role: 'Team Member', img: blankPhoto },
+    { name: 'Ayush Naik', role: 'Team Member', img: blankPhoto },
 ];
 
 export default function Team() {

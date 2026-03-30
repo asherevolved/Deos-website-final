@@ -86,8 +86,10 @@ export default function Projects() {
     /* ── Logo card shared render ── */
     const LogoCard = ({ client, size = 'lg', isPresent = false }: { client: typeof clients[0]; size?: 'sm' | 'lg'; isPresent?: boolean }) => {
         const isMumbaiChai = client.src === '/clients/images-removebg-preview.png';
+        const isSvj = client.src === '/clients/SVJ.png';
         const isWhiteTeak = client.src === '/clients/Color Logo.png';
         const isSmsl = client.src === '/clients/SMSL_blackwhite_logo.png';
+        const isWorkedSvj = !isPresent && isSvj;
         const isPresentWhiteTeak = isPresent && isWhiteTeak;
         const isPresentSmsl = isPresent && isSmsl;
 
@@ -95,7 +97,11 @@ export default function Projects() {
             <div
                 className="flex items-center justify-center"
                 style={{
-                    minWidth: isPresentSmsl ? (size === 'lg' ? '360px' : '320px') : (isMumbaiChai ? (size === 'lg' ? '340px' : '300px') : (size === 'lg' ? '300px' : '260px')),
+                    minWidth: isPresentSmsl
+                        ? (size === 'lg' ? '360px' : '320px')
+                        : isWorkedSvj
+                        ? (size === 'lg' ? '360px' : '320px')
+                        : (isMumbaiChai ? (size === 'lg' ? '340px' : '300px') : (size === 'lg' ? '300px' : '260px')),
                     height: size === 'lg' ? '140px' : '120px',
                 }}
             >
@@ -104,11 +110,13 @@ export default function Projects() {
                     alt={client.alt}
                     className={isPresentSmsl
                         ? 'w-[300px] h-[116px] object-contain select-none pointer-events-none'
+                        : isWorkedSvj
+                        ? 'w-[300px] h-[116px] object-contain select-none pointer-events-none'
                         : isMumbaiChai
                         ? 'w-[280px] h-[108px] object-contain select-none pointer-events-none'
                         : 'w-[220px] h-[84px] object-contain select-none pointer-events-none'}
                     style={{
-                        filter: isPresentWhiteTeak ? 'brightness(0) invert(1)' : 'brightness(1.15) contrast(1.15)'
+                        filter: isPresentWhiteTeak || isWorkedSvj ? 'brightness(0) invert(1)' : 'brightness(1.15) contrast(1.15)'
                     }}
                     loading="lazy"
                 />
