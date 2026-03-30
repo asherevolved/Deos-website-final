@@ -84,25 +84,31 @@ export default function Projects() {
     }, [isMobile]);
 
     /* ── Logo card shared render ── */
-    const LogoCard = ({ client, size = 'lg' }: { client: typeof clients[0]; size?: 'sm' | 'lg' }) => {
+    const LogoCard = ({ client, size = 'lg', isPresent = false }: { client: typeof clients[0]; size?: 'sm' | 'lg'; isPresent?: boolean }) => {
         const isMumbaiChai = client.src === '/clients/images-removebg-preview.png';
+        const isWhiteTeak = client.src === '/clients/Color Logo.png';
+        const isSmsl = client.src === '/clients/SMSL_blackwhite_logo.png';
+        const isPresentWhiteTeak = isPresent && isWhiteTeak;
+        const isPresentSmsl = isPresent && isSmsl;
 
         return (
             <div
                 className="flex items-center justify-center"
                 style={{
-                    minWidth: isMumbaiChai ? (size === 'lg' ? '340px' : '300px') : (size === 'lg' ? '300px' : '260px'),
+                    minWidth: isPresentSmsl ? (size === 'lg' ? '360px' : '320px') : (isMumbaiChai ? (size === 'lg' ? '340px' : '300px') : (size === 'lg' ? '300px' : '260px')),
                     height: size === 'lg' ? '140px' : '120px',
                 }}
             >
                 <img
                     src={client.src}
                     alt={client.alt}
-                    className={isMumbaiChai
+                    className={isPresentSmsl
+                        ? 'w-[300px] h-[116px] object-contain select-none pointer-events-none'
+                        : isMumbaiChai
                         ? 'w-[280px] h-[108px] object-contain select-none pointer-events-none'
                         : 'w-[220px] h-[84px] object-contain select-none pointer-events-none'}
                     style={{
-                        filter: 'brightness(1.15) contrast(1.15)'
+                        filter: isPresentWhiteTeak ? 'brightness(0) invert(1)' : 'brightness(1.15) contrast(1.15)'
                     }}
                     loading="lazy"
                 />
@@ -153,7 +159,7 @@ export default function Projects() {
                         <div className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10" style={{ background: 'linear-gradient(to right, var(--color-bg-deep), transparent)' }} />
                         <div className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10" style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }} />
                         <InfiniteSlider gap={16} speed={50} speedOnHover={20}>
-                            {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} size="sm" />)}
+                            {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} size="sm" isPresent />)}
                         </InfiniteSlider>
                     </div>
             </div>
@@ -249,7 +255,7 @@ export default function Projects() {
                             <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10" style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
                             <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10" style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
                             <InfiniteSlider gap={24} speed={55} speedOnHover={25}>
-                                {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} size="sm" />)}
+                                {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} size="sm" isPresent />)}
                             </InfiniteSlider>
                         </div>
                     </div>
