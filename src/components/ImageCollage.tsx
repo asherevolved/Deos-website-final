@@ -84,7 +84,7 @@ export default function ImageCollage() {
                 style={{ transformOrigin: '50% 50%' }}
             >
                 <img
-                    src="/image (3).webp"
+                    src="/cursor.webp"
                     alt="Deos Originals — Not Your Regular Marketing Agency"
                     className="w-full h-full object-cover"
                 />
