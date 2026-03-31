@@ -10,8 +10,8 @@ export function useLenis() {
 
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 1.4,
-            easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            lerp: 0.05,
+            smoothWheel: true,
             touchMultiplier: 2,
             infinite: false,
             autoRaf: false, // We'll use GSAP's ticker instead for perfect sync

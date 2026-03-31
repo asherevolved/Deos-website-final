@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(curl -s https://talentless.media)",
-      "Bash(npm run dev)"
+      "Bash(npm run dev)",
+      "Bash(rm:*)",
+      "Bash(cp:*)"
     ],
     "deny": [],
     "ask": []

@@ -46,7 +46,7 @@ export default function Hero() {
                 <span className="absolute top-28 left-6 md:left-10 text-[9px] uppercase tracking-[0.3em] text-gray-600 font-semibold"
                     style={{ writingMode: 'vertical-lr' }}
                 >
-                    Based in Bangalore
+                    Based in Mysore
                 </span>
                 <span className="absolute top-28 right-6 md:right-10 text-[9px] uppercase tracking-[0.3em] text-gray-600 font-semibold"
                     style={{ writingMode: 'vertical-lr' }}

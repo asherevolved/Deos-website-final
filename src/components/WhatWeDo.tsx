@@ -145,7 +145,7 @@ export default function WhatWeDo() {
         <section
             ref={sectionRef}
             id="about"
-            className="py-24 md:py-40 lg:py-56 px-5 md:px-12 lg:px-24 bg-[var(--color-bg-deep)] grain-overlay relative"
+            className="py-16 md:py-24 lg:py-32 px-5 md:px-12 lg:px-24 bg-[var(--color-bg-deep)] grain-overlay relative"
         >
             <div className="max-w-7xl mx-auto relative z-[2]">
 
@@ -169,7 +169,7 @@ export default function WhatWeDo() {
                 />
 
                 {/* ── ABOUT DESCRIPTION ── */}
-                <div ref={descRef} className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-28 md:mb-40">
+                <div ref={descRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-16 md:mb-24">
                     <div />
                     <div className="space-y-8">
                         <p

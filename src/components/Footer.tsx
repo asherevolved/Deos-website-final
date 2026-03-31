@@ -168,7 +168,7 @@ export default function Footer() {
                                 className="text-white text-xl uppercase tracking-tight"
                                 style={{ fontFamily: 'var(--font-display)' }}
                             >
-                                Bangalore, India
+                                Mysore, India
                             </span>
                         </div>
                         <div>

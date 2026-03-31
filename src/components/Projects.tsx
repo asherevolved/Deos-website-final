@@ -55,7 +55,7 @@ export default function Projects() {
                 scrollTrigger: {
                     trigger: wrapper,
                     start: 'top top',
-                    end: '+=3000',
+                    end: '+=1200',
                     pin: true,
                     scrub: 1,
                     anticipatePin: 1,
@@ -127,8 +127,8 @@ export default function Projects() {
     /* ── Mobile layout ── */
     if (isMobile) {
         return (
-            <div ref={wrapperRef} id="projects" className="bg-[var(--color-bg-deep)] py-32 px-5">
-                <div className="mb-10">
+            <div ref={wrapperRef} id="projects" className="bg-[var(--color-bg-deep)] py-20 px-5">
+                <div className="mb-8">
                     <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-4">
                         Our Portfolio
                     </span>
@@ -142,9 +142,9 @@ export default function Projects() {
                     <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
                 </div>
 
-                    <div className="relative mb-16 bg-white rounded-sm">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10" style={{ background: 'linear-gradient(to right, #ffffff, transparent)' }} />
-                        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10" style={{ background: 'linear-gradient(to left, #ffffff, transparent)' }} />
+                    <div className="relative mb-16 rounded-sm">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10" style={{ background: 'linear-gradient(to right, var(--color-bg-deep), transparent)' }} />
+                        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10" style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }} />
                         <InfiniteSlider gap={16} speed={50} speedOnHover={20}>
                             {clients.map((c) => <LogoCard key={c.alt} client={c} size="sm" />)}
                         </InfiniteSlider>
@@ -163,9 +163,9 @@ export default function Projects() {
                         <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
                     </div>
 
-                    <div className="relative bg-white rounded-sm">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10" style={{ background: 'linear-gradient(to right, #ffffff, transparent)' }} />
-                        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10" style={{ background: 'linear-gradient(to left, #ffffff, transparent)' }} />
+                    <div className="relative rounded-sm">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10" style={{ background: 'linear-gradient(to right, var(--color-bg-deep), transparent)' }} />
+                        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10" style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }} />
                         <InfiniteSlider gap={16} speed={50} speedOnHover={20}>
                             {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} size="sm" isPresent />)}
                         </InfiniteSlider>
@@ -233,9 +233,9 @@ export default function Projects() {
                     <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent mb-6" />
 
                     {/* Single logo row */}
-                    <div className="relative mb-8 bg-white rounded-sm">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10" style={{ background: 'linear-gradient(to right, #ffffff, transparent)' }} />
-                        <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10" style={{ background: 'linear-gradient(to left, #ffffff, transparent)' }} />
+                    <div className="relative mb-8 rounded-sm">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10" style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
+                        <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10" style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
                         <InfiniteSlider gap={20} speed={60} speedOnHover={25}>
                             {clients.map((c) => <LogoCard key={c.alt} client={c} size="sm" />)}
                         </InfiniteSlider>
@@ -259,9 +259,9 @@ export default function Projects() {
 
                         <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent mb-6" />
 
-                        <div className="relative bg-white rounded-sm">
-                            <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10" style={{ background: 'linear-gradient(to right, #ffffff, transparent)' }} />
-                            <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10" style={{ background: 'linear-gradient(to left, #ffffff, transparent)' }} />
+                        <div className="relative rounded-sm">
+                            <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10" style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
+                            <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10" style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
                             <InfiniteSlider gap={24} speed={55} speedOnHover={25}>
                                 {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} size="sm" isPresent />)}
                             </InfiniteSlider>

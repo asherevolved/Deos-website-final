@@ -1,4 +1,6 @@
 import { useLenis } from './hooks/useLenis';
+import CustomCursor from './components/CustomCursor';
+
 
 import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
@@ -18,18 +20,21 @@ function App() {
 
   return (
     <>
+      <CustomCursor />
       <ScrollProgress />
       <Navbar />
-      <Hero />
-      <HorizontalMarquee />
-      <WhatWeDo />
-      <StickyFeatures />
-      <Projects />
-      <ContentSticks />
-      <InstagramFeed />
-      <Team />
-      <ImageCollage />
-      <Footer />
+      <main className="overflow-clip w-full">
+        <Hero />
+        <HorizontalMarquee />
+        <WhatWeDo />
+        <StickyFeatures />
+        <Projects />
+        <ContentSticks />
+        <InstagramFeed />
+        <Team />
+        <ImageCollage />
+        <Footer />
+      </main>
     </>
   );
 }
