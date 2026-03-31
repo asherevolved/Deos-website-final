@@ -66,6 +66,15 @@ export default function ImageCollage() {
                     },
                 }
             );
+
+            // Curtain Reveal Effect: Pin the section so the next section (footer) rolls over it
+            ScrollTrigger.create({
+                trigger: sectionRef.current,
+                start: 'top top',
+                end: '+=100%',
+                pin: true,
+                pinSpacing: false,
+            });
         }, sectionRef);
 
         return () => ctx.revert();

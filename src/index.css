@@ -29,6 +29,9 @@ html {
   scroll-behavior: auto;
 }
 
+body, html {
+}
+
 /* Lenis smooth scroll integration */
 html.lenis,
 html.lenis body {

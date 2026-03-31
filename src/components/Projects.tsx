@@ -234,8 +234,8 @@ export default function Projects() {
 
                     {/* Single logo row */}
                     <div className="relative mb-8 rounded-sm">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10" style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
-                        <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10" style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
+                        <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10 " style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
+                        <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10 " style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
                         <InfiniteSlider gap={20} speed={60} speedOnHover={25}>
                             {clients.map((c) => <LogoCard key={c.alt} client={c} size="sm" />)}
                         </InfiniteSlider>
@@ -260,8 +260,8 @@ export default function Projects() {
                         <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent mb-6" />
 
                         <div className="relative rounded-sm">
-                            <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10" style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
-                            <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10" style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
+                            <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10 " style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
+                            <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10 " style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
                             <InfiniteSlider gap={24} speed={55} speedOnHover={25}>
                                 {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} size="sm" isPresent />)}
                             </InfiniteSlider>

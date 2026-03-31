@@ -79,12 +79,14 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    <a
-                        href="mailto:deosoriginals@gmail.com"
-                        className="hidden md:flex items-center gap-2 border border-gray-700 text-white px-5 py-2 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-[var(--color-primary)] hover:text-black hover:border-[var(--color-primary)] transition-all duration-500"
-                    >
-                        Get in Touch
-                    </a>
+                    <div className="hidden md:flex items-center gap-12">
+                        <a
+                            href="mailto:deosoriginals@gmail.com"
+                            className="flex items-center gap-2 border border-gray-700 text-white px-5 py-2 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-[var(--color-primary)] hover:text-black hover:border-[var(--color-primary)] transition-all duration-500"
+                        >
+                            Get in Touch
+                        </a>
+                    </div>
 
                     {/* Mobile hamburger */}
                     <button
@@ -131,20 +133,23 @@ export default function Navbar() {
                             {item}
                         </button>
                     ))}
-                    <a
-                        href="mailto:deosoriginals@gmail.com"
-                        className="mt-4 border border-[var(--color-primary)] text-[var(--color-primary)] px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] hover:bg-[var(--color-primary)] hover:text-black transition-all duration-500"
+                    <div
+                        className="mt-4 flex flex-col items-center gap-8"
                         style={{
                             opacity: menuOpen ? 1 : 0,
                             transform: menuOpen ? 'translateY(0)' : 'translateY(20px)',
                             transition: 'all 0.4s ease 0.35s',
                         }}
                     >
-                        Get in Touch
-                    </a>
+                        <a
+                            href="mailto:deosoriginals@gmail.com"
+                            className="border border-[var(--color-primary)] text-[var(--color-primary)] px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] hover:bg-[var(--color-primary)] hover:text-black transition-all duration-500"
+                        >
+                            Get in Touch
+                        </a>
+                    </div>
                 </div>
             </div>
         </>
     );
 }
-

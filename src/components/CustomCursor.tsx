@@ -10,7 +10,7 @@ export default function CustomCursor() {
         if (!cursor) return;
 
         // Force hotspot offset without conflict with gsap x/y tweens
-        // and start off-screen to avoid top-left flicker
+        // Point is on the right side of the inner mirrored image, so xPercent is -85.
         gsap.set(cursor, { xPercent: -85, yPercent: -15, x: -100, y: -100 });
 
         // Hide cursor natively
@@ -45,14 +45,19 @@ export default function CustomCursor() {
     return (
         <div
             ref={cursorRef}
-            className={`fixed top-0 left-0 w-[200px] h-[200px] pointer-events-none z-[9999] hidden md:block transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-            style={{
-                backgroundImage: 'url(/new-cursor.png)',
-                backgroundSize: 'contain',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                filter: 'brightness(0) invert(1) drop-shadow(0px 2px 4px rgba(0,0,0,0.5))'
-            }}
-        />
+            className={`fixed top-0 left-0 w-[100px] h-[100px] pointer-events-none z-[9999] hidden md:block transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+        >
+            {/* Native image pointing right, aligning right tip (85%, 15%) to raw cursor coordinate */}
+            <div 
+                className="w-full h-full"
+                style={{
+                    backgroundImage: 'url(/new-cursor.png)',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'top right',
+                    filter: 'brightness(0) invert(1) drop-shadow(0px 2px 4px rgba(0,0,0,0.5))'
+                }}
+            />
+        </div>
     );
 }
