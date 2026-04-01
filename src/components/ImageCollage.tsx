@@ -18,22 +18,8 @@ export default function ImageCollage() {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Image scales from 0.85 to 1 as you scroll into it
-            gsap.fromTo(
-                imageRef.current,
-                { scale: 0.8, borderRadius: '24px' },
-                {
-                    scale: 1,
-                    borderRadius: '0px',
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: 'top bottom',
-                        end: 'top top',
-                        scrub: 1,
-                    },
-                }
-            );
+            // Ensure image starts fully flush
+            gsap.set(imageRef.current, { scale: 1, borderRadius: '0px' });
 
             // Dark overlay fades in as image enters for contrast
             gsap.fromTo(
@@ -66,15 +52,6 @@ export default function ImageCollage() {
                     },
                 }
             );
-
-            // Curtain Reveal Effect: Pin the section so the next section (footer) rolls over it
-            ScrollTrigger.create({
-                trigger: sectionRef.current,
-                start: 'top top',
-                end: '+=100%',
-                pin: true,
-                pinSpacing: false,
-            });
         }, sectionRef);
 
         return () => ctx.revert();
@@ -83,7 +60,8 @@ export default function ImageCollage() {
     return (
         <section
             ref={sectionRef}
-            className="relative overflow-hidden bg-[var(--color-bg-deep)]"
+            // Use native CSS sticky to create the curtain effect without GSAP DOM un-flow glitching!
+            className="sticky top-0 z-0 overflow-hidden bg-[var(--color-bg-deep)]"
             style={{ height: '100vh' }}
         >
             {/* Full-bleed image container */}

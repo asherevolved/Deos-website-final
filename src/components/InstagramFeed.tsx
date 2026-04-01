@@ -16,7 +16,7 @@ function removeBadges(root: Document | ShadowRoot | Element = document) {
             root.querySelectorAll<HTMLElement>(sel).forEach((el) => {
                 el.remove();
             });
-        } catch (_) { /* cross-origin iframes will throw — safe to ignore */ }
+        } catch { /* cross-origin iframes will throw — safe to ignore */ }
     });
 }
 
@@ -89,10 +89,10 @@ export default function InstagramFeed() {
     return (
         <section
             id="instagram"
-            className="py-24 md:py-32 px-5 md:px-12 lg:px-24 bg-[var(--color-bg-deep)] relative"
+            className="py-14 md:py-20 px-5 md:px-12 lg:px-24 bg-[var(--color-bg-deep)] relative"
         >
             {/* Section header */}
-            <div className="max-w-7xl mx-auto mb-12 md:mb-16">
+            <div className="max-w-7xl mx-auto mb-8 md:mb-10">
                 <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-4">
                     Follow Along
                 </span>

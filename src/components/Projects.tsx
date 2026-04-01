@@ -127,7 +127,7 @@ export default function Projects() {
     /* ── Mobile layout ── */
     if (isMobile) {
         return (
-            <div ref={wrapperRef} id="projects" className="bg-[var(--color-bg-deep)] py-20 px-5">
+            <div ref={wrapperRef} id="projects" className="bg-[var(--color-bg-deep)] py-14 px-5">
                 <div className="mb-8">
                     <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-4">
                         Our Portfolio
@@ -142,7 +142,7 @@ export default function Projects() {
                     <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
                 </div>
 
-                    <div className="relative mb-16 rounded-sm">
+                    <div className="relative mb-10 rounded-sm">
                         <div className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10" style={{ background: 'linear-gradient(to right, var(--color-bg-deep), transparent)' }} />
                         <div className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10" style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }} />
                         <InfiniteSlider gap={16} speed={50} speedOnHover={20}>

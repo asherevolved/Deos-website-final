@@ -84,7 +84,7 @@ export default function Team() {
         <section
             ref={sectionRef}
             id="team"
-            className="relative bg-[var(--color-bg-deep)] overflow-hidden grain-overlay py-20 md:py-32 lg:py-40"
+            className="relative bg-[var(--color-bg-deep)] overflow-hidden grain-overlay py-14 md:py-20 lg:py-24"
         >
             {/* Header */}
             <div className="px-5 md:px-12 lg:px-24 max-w-7xl mx-auto relative z-[2]">
@@ -104,11 +104,11 @@ export default function Team() {
                         </p>
                     </div>
                 </div>
-                <div ref={lineRef} className="h-[2px] bg-gray-800 mt-10 origin-left" />
+                <div ref={lineRef} className="h-[2px] bg-gray-800 mt-8 origin-left" />
             </div>
 
             {/* Team grid — 4 columns to show ALL members */}
-            <div className="px-5 md:px-12 lg:px-24 max-w-7xl mx-auto mt-10 md:mt-16">
+            <div className="px-5 md:px-12 lg:px-24 max-w-7xl mx-auto mt-8 md:mt-12">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                     {teamMembers.map((member, i) => (
                         <div

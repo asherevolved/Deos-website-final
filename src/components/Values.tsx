@@ -79,12 +79,12 @@ export default function Values() {
     return (
         <section
             ref={sectionRef}
-            className="py-32 bg-[var(--color-bg-deep)] relative overflow-hidden"
+            className="py-14 md:py-20 bg-[var(--color-bg-deep)] relative overflow-hidden"
         >
             {/* Subtle background glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--color-primary)]/5 rounded-full blur-[200px] pointer-events-none" />
 
-            <div ref={titleRef} className="max-w-screen-xl mx-auto px-6 text-center mb-20 relative">
+            <div ref={titleRef} className="max-w-screen-xl mx-auto px-6 text-center mb-10 md:mb-14 relative">
                 <h2
                     className="relative z-10 text-5xl md:text-7xl uppercase mb-6 text-white"
                     style={{ fontFamily: 'var(--font-display)' }}

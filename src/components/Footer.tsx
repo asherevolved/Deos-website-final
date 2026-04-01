@@ -40,8 +40,9 @@ export default function Footer() {
         <footer
             ref={sectionRef}
             id="contact"
-            // Dark gray/black rounded wrapper that pulls tightly over the pinned ImageCollage like a curtain
-            className="relative bg-[#0a0a0a] rounded-t-[2.5rem] md:rounded-t-[4rem] z-20 pt-16 md:pt-24 pb-12 md:pb-16 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]"
+            // Dark gray/black wrapper that pulls tightly over the pinned ImageCollage like a curtain
+            // Removed rounded-t classes to prevent the background image from bleeding through the corners awkwardly
+            className="relative bg-[#0a0a0a] z-20 pt-16 md:pt-24 pb-12 md:pb-16 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]"
         >
             {/* The structural solid yellow box from the images (using DEOS theme #EAB308) */}
             <div 
@@ -82,7 +83,7 @@ export default function Footer() {
                     {/* LEFT COLUMN: GET IN TOUCH & SOCIALS */}
                     <div className="w-full lg:w-3/5 flex flex-col">
                         <h2 
-                            className="text-[#1a1a1a] text-[18vw] sm:text-[14vw] lg:text-[11vw] leading-[0.8] tracking-tighter mb-8 uppercase"
+                            className="text-[#1a1a1a] text-[14vw] sm:text-[11vw] lg:text-[8vw] leading-[0.8] tracking-tighter mb-6 uppercase"
                             style={{ fontFamily: 'var(--font-display)' }}
                         >
                             Get In Touch
@@ -92,7 +93,7 @@ export default function Footer() {
                         <div className="w-full border-t border-dashed border-[#1a1a1a] opacity-40 my-8" />
                         
                         <p 
-                            className="text-[#1a1a1a] font-medium text-sm md:text-base max-w-sm mb-10 leading-relaxed" 
+                            className="text-[#1a1a1a] font-medium text-xs md:text-sm max-w-sm mb-8 leading-relaxed" 
                             style={{ fontFamily: 'var(--font-body)' }}
                         >
                             Stories that captivate, content that lasts. We build brands that stand on their own.
@@ -100,7 +101,7 @@ export default function Footer() {
                     </div>
 
                     {/* RIGHT COLUMN: CONTACT INFO & BACK TO TOP */}
-                    <div className="w-full lg:w-2/5 flex flex-col justify-end text-[#1a1a1a] text-xl md:text-3xl space-y-6 md:space-y-8 uppercase tracking-tighter pb-2 lg:pb-6" style={{ fontFamily: 'var(--font-display)' }}>
+                    <div className="w-full lg:w-2/5 flex flex-col justify-end text-[#1a1a1a] text-base md:text-xl space-y-5 md:space-y-6 uppercase tracking-tighter pb-2 lg:pb-6" style={{ fontFamily: 'var(--font-display)' }}>
                         <div className="flex items-start gap-4 lg:gap-8">
                             <span className="w-12 text-[#1a1a1a]" style={{ fontFamily: 'var(--font-display)' }}>H.Q.</span>
                             <span>Mysore, India</span>
@@ -118,13 +119,13 @@ export default function Footer() {
                                 9110851733 / +91 78925 72758
                             </a>
                         </div>
-                        <div className="flex items-center gap-4 lg:gap-8 pt-10 md:pt-16 cursor-pointer hover:opacity-60 transition-opacity" onClick={handleScrollToTop}>
-                            <span className="w-12 text-[#1a1a1a] flex items-center justify-start text-2xl md:text-4xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 md:w-8 md:h-8">
+                        <div className="flex items-center gap-4 lg:gap-8 pt-8 md:pt-12 cursor-pointer hover:opacity-60 transition-opacity" onClick={handleScrollToTop}>
+                            <span className="w-12 text-[#1a1a1a] flex items-center justify-start text-xl md:text-2xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
                                 </svg>
                             </span>
-                            <button className="uppercase tracking-tighter">
+                            <button className="uppercase tracking-tighter text-sm md:text-base">
                                 Go Back To Top
                             </button>
                         </div>

@@ -111,7 +111,7 @@ export default function StickyFeatures() {
                 {/* Left: Sticky heading (only on desktop) */}
                 <div
                     ref={headingRef}
-                    className="pt-20 pb-10 lg:pt-32 lg:pb-16 lg:pr-16 flex flex-col justify-center lg:h-screen"
+                    className="pt-16 pb-8 lg:pt-24 lg:pb-12 lg:pr-16 flex flex-col justify-center lg:h-screen"
                 >
                     <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold mb-6">
                         What We Stand For
@@ -136,11 +136,11 @@ export default function StickyFeatures() {
                 </div>
 
                 {/* Right: Scrolling cards */}
-                <div ref={cardsContainerRef} className="py-10 lg:py-32 space-y-0">
+                <div ref={cardsContainerRef} className="py-8 lg:py-20 space-y-0">
                     {features.map((feature, idx) => (
                         <div
                             key={idx}
-                            className="feature-card py-10 md:py-16 lg:py-28"
+                            className="feature-card py-8 md:py-12 lg:py-16"
                         >
                             {/* Animated line separator */}
                             <div className="card-line h-[2px] bg-gray-800 mb-8 lg:mb-12 origin-left" />

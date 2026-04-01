@@ -116,13 +116,13 @@ export default function HowWeCanHelp() {
             {/* Top border */}
             <div className="h-[1px] bg-gradient-to-r from-[var(--color-primary)] via-gray-800 to-transparent" />
 
-            <div className="max-w-7xl mx-auto px-5 md:px-12 lg:px-24 py-24 md:py-40 lg:py-56">
+            <div className="max-w-7xl mx-auto px-5 md:px-12 lg:px-24 py-14 md:py-20 lg:py-24">
                 <div className="flex flex-col lg:flex-row lg:gap-24 xl:gap-32">
 
                     {/* ── LEFT: Sticky heading ── */}
                     <div
                         ref={headingRef}
-                        className="lg:w-[38%] shrink-0 lg:sticky lg:top-32 lg:self-start mb-16 lg:mb-0"
+                        className="lg:w-[38%] shrink-0 lg:sticky lg:top-24 lg:self-start mb-10 lg:mb-0"
                     >
                         <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-6">
                             (Services)

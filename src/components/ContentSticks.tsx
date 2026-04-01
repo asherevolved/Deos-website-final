@@ -101,7 +101,7 @@ export default function ContentSticks() {
     return (
         <section
             ref={sectionRef}
-            className="py-16 md:py-24 lg:py-32 bg-[var(--color-bg-deep)] relative grain-overlay"
+            className="py-12 md:py-16 lg:py-20 bg-[var(--color-bg-deep)] relative grain-overlay"
         >
             {/* Subtle glow */}
             <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[var(--color-primary)]/3 rounded-full blur-[300px] pointer-events-none" />
@@ -131,7 +131,7 @@ export default function ContentSticks() {
             </div>
 
             {/* Description — constrained */}
-            <div ref={descRef} className="relative z-[2] px-5 md:px-12 lg:px-24 mt-12 md:mt-20 flex justify-start">
+            <div ref={descRef} className="relative z-[2] px-5 md:px-12 lg:px-24 mt-8 md:mt-12 flex justify-start">
                 <div className="max-w-md border-l-[3px] border-[var(--color-primary)] pl-5 md:pl-6">
                     <p className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-gray-400 leading-relaxed font-bold">
                         CONTENT TODAY IS OFTEN TIED TO INDIVIDUALS. DEOS ORIGINALS TAKES A DIFFERENT APPROACH.

@@ -11,6 +11,7 @@ const services = [
         description:
             'We design and develop high-performance websites and apps that look incredible and convert. Built for speed, crafted for impact — from landing pages to full-scale digital platforms.',
         tags: ['Web Design', 'App Development', 'UI/UX', 'CMS Integration'],
+        image: '/what-we-do/Website and Apps.jpg',
     },
     {
         number: '02.',
@@ -18,6 +19,7 @@ const services = [
         description:
             'Crafting visual identities that feel clear, timeless, and true to your brand. We distill your essence into a language that is impossible to ignore — from logo to full brand system.',
         tags: ['Logo Design', 'Color System', 'Typography', 'Brand Direction'],
+        image: '/what-we-do/Branding.jpg',
     },
     {
         number: '03.',
@@ -25,6 +27,7 @@ const services = [
         description:
             'A launch is your defining moment. We orchestrate launch strategies that create noise, build anticipation, and make your brand impossible to miss from day one.',
         tags: ['Launch Strategy', 'Campaign Planning', 'Store Openings', 'PR Events'],
+        image: '/what-we-do/Brand Launches.jpg',
     },
     {
         number: '04.',
@@ -32,6 +35,7 @@ const services = [
         description:
             'Scroll-stopping visuals and high-impact ad content. We handle everything from concept and direction to final edit — built to perform across every platform.',
         tags: ['Photography', 'Video Ads', 'Creative Direction', 'Post Production'],
+        image: '/what-we-do/Promo Shoots and Ads.jpg',
     },
     {
         number: '05.',
@@ -39,6 +43,7 @@ const services = [
         description:
             'Reach audiences in the most captivating environment imaginable. We produce cinematic-quality ads made for the big screen — bold, memorable, and built to last.',
         tags: ['Cinema Advertising', 'Cinematic Production', 'Brand Films', 'Screen Media'],
+        image: '/what-we-do/Movie Screening Adds.jpg',
     },
     {
         number: '06.',
@@ -46,6 +51,7 @@ const services = [
         description:
             'We connect your brand with the right voices and the right rooms. From strategic press coverage to influencer partnerships that genuinely move the needle.',
         tags: ['Press & Media', 'Influencer Campaigns', 'Brand Partnerships', 'Community'],
+        image: '/what-we-do/Pr and Influencer Marketing.jpg',
     },
     {
         number: '07.',
@@ -53,6 +59,7 @@ const services = [
         description:
             'Full-funnel Meta advertising managed by experts. We run data-driven campaigns across Facebook and Instagram that grow your audience and drive real results.',
         tags: ['Facebook Ads', 'Instagram Ads', 'Audience Targeting', 'Performance Marketing'],
+        image: '/what-we-do/258.webp',
     },
 ];
 
@@ -63,6 +70,7 @@ export default function WhatWeDo() {
     const lineRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<HTMLDivElement>(null);
     const [openIndex, setOpenIndex] = useState<number | null>(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     /* ── Scroll animations ── */
     useEffect(() => {
@@ -145,7 +153,7 @@ export default function WhatWeDo() {
         <section
             ref={sectionRef}
             id="about"
-            className="py-16 md:py-24 lg:py-32 px-5 md:px-12 lg:px-24 bg-[var(--color-bg-deep)] grain-overlay relative"
+            className="py-12 md:py-16 lg:py-20 px-5 md:px-12 lg:px-24 bg-[var(--color-bg-deep)] grain-overlay relative"
         >
             <div className="max-w-7xl mx-auto relative z-[2]">
 
@@ -165,11 +173,11 @@ export default function WhatWeDo() {
                 {/* ── DIVIDER ── */}
                 <div
                     ref={lineRef}
-                    className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent mb-20 origin-left"
+                    className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent mb-12 origin-left"
                 />
 
                 {/* ── ABOUT DESCRIPTION ── */}
-                <div ref={descRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-16 md:mb-24">
+                <div ref={descRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-12 md:mb-16">
                     <div />
                     <div className="space-y-8">
                         <p
@@ -194,22 +202,25 @@ export default function WhatWeDo() {
                 </div>
 
                 {/* ── SERVICES ACCORDION ── */}
-                <div className="h-[1px] bg-gray-800/80 mb-16 md:mb-20" />
+                <div className="h-[1px] bg-gray-800/80 mb-12 md:mb-16" />
 
                 <div
                     ref={listRef}
-                    onMouseLeave={() => setOpenIndex(null)}
+                    onMouseLeave={() => { setOpenIndex(null); setHoveredIndex(null); }}
+                    className="relative flex"
                 >
+                    {/* Left: Service list */}
+                    <div className="flex-1 min-w-0">
                         {services.map((service, idx) => {
                             const isOpen = openIndex === idx;
                             return (
                                 <div
                                     key={idx}
-                                    className="service-row border-t border-gray-800/70"
-                                    onMouseEnter={() => setOpenIndex(idx)}
+                                    className="service-row relative z-0 border-t border-gray-800/70 overflow-hidden"
+                                    onMouseEnter={() => { setOpenIndex(idx); setHoveredIndex(idx); }}
                                 >
                                     <button
-                                        className="w-full text-left py-7 md:py-8 flex items-center justify-between gap-6 group cursor-pointer"
+                                        className="relative z-10 w-full text-left py-7 md:py-8 flex items-center justify-between gap-6 group cursor-pointer"
                                         onClick={() => setOpenIndex(isOpen ? null : idx)}
                                         aria-expanded={isOpen}
                                     >
@@ -250,7 +261,7 @@ export default function WhatWeDo() {
 
                                     {/* Expandable panel */}
                                     <div
-                                        className="service-panel overflow-hidden"
+                                        className="service-panel relative z-10 overflow-hidden"
                                         style={{ height: 0, opacity: 0 }}
                                     >
                                         <div className="pb-8 md:pb-10 pl-0 md:pl-[4.5rem]">
@@ -277,7 +288,7 @@ export default function WhatWeDo() {
                         <div className="border-t border-gray-800/70" />
 
                         {/* CTA */}
-                        <div className="pt-10 md:pt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                        <div className="pt-8 md:pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                             <p className="text-sm text-gray-500 font-medium max-w-sm leading-relaxed">
                                 Not sure where to start?{' '}
                                 <span className="text-white font-semibold">We'll figure it out together.</span>
@@ -292,6 +303,23 @@ export default function WhatWeDo() {
                                 </span>
                             </a>
                         </div>
+                    </div>
+
+                    {/* Right: Hover image preview (desktop only) */}
+                    <div className="hidden lg:flex w-[320px] xl:w-[380px] shrink-0 ml-10 items-start justify-center sticky top-24 self-start">
+                        <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm">
+                            {services.map((service, idx) => (
+                                <img
+                                    key={idx}
+                                    src={service.image}
+                                    alt={service.title}
+                                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out"
+                                    style={{ opacity: hoveredIndex === idx ? 1 : 0 }}
+                                    loading="lazy"
+                                />
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

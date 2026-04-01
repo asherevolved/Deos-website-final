@@ -46,9 +46,9 @@ export default function ClientsSection() {
     <section
       ref={sectionRef}
       id="clients"
-      className="py-24 md:py-32 bg-[var(--color-bg-deep)] grain-overlay relative overflow-hidden"
+      className="py-14 md:py-20 bg-[var(--color-bg-deep)] grain-overlay relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-12 lg:px-24 mb-14 md:mb-20">
+      <div className="max-w-7xl mx-auto px-5 md:px-12 lg:px-24 mb-10 md:mb-14">
         <div ref={headingRef}>
           <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-6">
             Our Portfolio
@@ -105,7 +105,7 @@ export default function ClientsSection() {
       </div>
 
       {/* Bottom rule */}
-      <div className="max-w-7xl mx-auto px-5 md:px-12 lg:px-24 mt-14 md:mt-20">
+      <div className="max-w-7xl mx-auto px-5 md:px-12 lg:px-24 mt-10 md:mt-14">
         <div className="h-[1px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
       </div>
     </section>
