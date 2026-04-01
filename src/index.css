@@ -85,13 +85,33 @@ body {
 
 /* ── Text outline utility ── */
 .text-outline {
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.5);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
   color: transparent;
 }
 
 .text-outline-thick {
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.8);
   color: transparent;
+}
+
+@media (max-width: 767px) {
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+  }
+  .text-outline-thick {
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float,
+  .animate-float-delayed,
+  .animate-float-slow,
+  .animate-scroll-pulse {
+    animation: none !important;
+  }
 }
 
 /* ── Noise/grain overlay ── */
@@ -108,6 +128,13 @@ body {
   background-size: 256px 256px;
   pointer-events: none;
   z-index: 1;
+}
+
+/* Disable grain overlay on mobile for performance */
+@media (max-width: 767px) {
+  .grain-overlay::before {
+    display: none;
+  }
 }
 
 /* ── Marquee animation ── */

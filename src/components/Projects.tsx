@@ -95,28 +95,26 @@ export default function Projects() {
         const isPresentWhiteTeak = isPresent && isWhiteTeak;
         const isPresentSmsl = isPresent && isSmsl;
 
+        const isSmallSize = size === 'sm';
+        const baseW = isPresentSmsl || isWorkedSvj ? 260 : (isMumbaiChai ? 240 : 200);
+        const baseH = isSmallSize ? 90 : 120;
+
         return (
             <div
                 className="flex items-center justify-center"
                 style={{
-                    minWidth: isPresentSmsl
-                        ? (size === 'lg' ? '360px' : '320px')
-                        : isWorkedSvj
-                        ? (size === 'lg' ? '360px' : '320px')
-                        : (isMumbaiChai ? (size === 'lg' ? '340px' : '300px') : (size === 'lg' ? '300px' : '260px')),
-                    height: size === 'lg' ? '140px' : '120px',
+                    minWidth: `${baseW}px`,
+                    height: `${baseH}px`,
                 }}
             >
                 <img
                     src={client.src}
                     alt={client.alt}
-                    className={isPresentSmsl
-                        ? 'w-[300px] h-[116px] object-contain select-none pointer-events-none'
-                        : isWorkedSvj
-                        ? 'w-[300px] h-[116px] object-contain select-none pointer-events-none'
+                    className={isPresentSmsl || isWorkedSvj
+                        ? 'w-[200px] md:w-[300px] h-auto max-h-full object-contain select-none pointer-events-none'
                         : isMumbaiChai
-                        ? 'w-[280px] h-[108px] object-contain select-none pointer-events-none'
-                        : 'w-[220px] h-[84px] object-contain select-none pointer-events-none'}
+                        ? 'w-[180px] md:w-[280px] h-auto max-h-full object-contain select-none pointer-events-none'
+                        : 'w-[150px] md:w-[220px] h-auto max-h-full object-contain select-none pointer-events-none'}
                     style={{
                         filter: isPresentWhiteTeak || isWorkedSvj ? 'brightness(0) invert(1)' : 'brightness(1.15) contrast(1.15)'
                     }}
@@ -139,7 +137,7 @@ export default function Projects() {
                         style={{ fontFamily: 'var(--font-display)', fontWeight: 900 }}
                     >
                         Clients We<br />
-                        <span className="text-outline-thick">Worked</span> With
+                        <span className="text-outline md:text-outline-thick">Worked</span> With
                     </h2>
                     <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
                 </div>
@@ -226,7 +224,7 @@ export default function Projects() {
                                 style={{ fontFamily: 'var(--font-display)', fontWeight: 900 }}
                             >
                                 Clients We{' '}
-                                <span className="text-outline-thick">Worked</span> With
+                                <span className="text-outline md:text-outline-thick">Worked</span> With
                             </h2>
                         </div>
                     </div>

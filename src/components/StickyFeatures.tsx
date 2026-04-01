@@ -58,6 +58,7 @@ export default function StickyFeatures() {
             }
 
             // Animate each card as it enters
+            const isMobile = window.innerWidth < 768;
             if (cardsContainerRef.current) {
                 const cards = cardsContainerRef.current.querySelectorAll('.feature-card');
                 cards.forEach((card) => {
@@ -68,11 +69,11 @@ export default function StickyFeatures() {
                             { scaleX: 0 },
                             {
                                 scaleX: 1,
-                                duration: 1,
+                                duration: isMobile ? 0.6 : 1,
                                 ease: 'power3.inOut',
                                 scrollTrigger: {
                                     trigger: card,
-                                    start: 'top 75%',
+                                    start: 'top 85%',
                                 },
                             }
                         );
@@ -82,15 +83,15 @@ export default function StickyFeatures() {
                     const content = card.querySelector('.card-content');
                     if (content) {
                         gsap.fromTo(content,
-                            { opacity: 0, y: 60 },
+                            { opacity: 0, y: isMobile ? 20 : 60 },
                             {
                                 opacity: 1,
                                 y: 0,
-                                duration: 1.2,
+                                duration: isMobile ? 0.6 : 1.2,
                                 ease: 'power3.out',
                                 scrollTrigger: {
                                     trigger: card,
-                                    start: 'top 75%',
+                                    start: 'top 85%',
                                 },
                             }
                         );
@@ -122,7 +123,7 @@ export default function StickyFeatures() {
                     >
                         Why
                         <br />
-                        <span className="text-outline-thick">Deos</span>
+                        <span className="text-outline md:text-outline-thick">Deos</span>
                         <br />
                         Originals?
                     </h2>

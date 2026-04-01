@@ -58,11 +58,9 @@ export default function Navbar() {
                 <div className="px-5 md:px-10 py-4 md:py-5 flex justify-between items-center">
                     <button
                         onClick={handleScrollTop}
-                        className="text-white text-xl md:text-2xl tracking-tighter uppercase cursor-pointer"
-                        style={{ fontFamily: 'var(--font-display)' }}
+                        className="cursor-pointer"
                     >
-                        DEOS<span className="text-[var(--color-primary)]">ORIGINALS</span>
-                        <span className="text-[var(--color-primary)] text-xs align-top font-sans">©</span>
+                        <img src="/logo.png" alt="Deos Originals" className="h-[72px] md:h-[90px] w-auto object-contain" />
                     </button>
 
                     {/* Desktop nav */}

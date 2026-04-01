@@ -98,7 +98,7 @@ export default function Team() {
                             className="text-[12vw] md:text-[10vw] lg:text-[8vw] uppercase leading-[0.85] text-white tracking-tighter"
                             style={{ fontFamily: 'var(--font-display)' }}
                         >
-                            Our <span className="text-outline-thick">Team</span>
+                            Our <span className="text-outline md:text-outline-thick">Team</span>
                         </h2>
                         <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-gray-500 max-w-xs md:text-right leading-relaxed">
                             Storytellers & Strategists united by our passion for creating things that matter.
@@ -110,7 +110,7 @@ export default function Team() {
 
             {/* Team grid — 4 columns to show ALL members */}
             <div className="px-5 md:px-12 lg:px-24 max-w-7xl mx-auto mt-8 md:mt-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
                     {teamMembers.map((member, i) => (
                         <div
                             key={member.name}
@@ -129,11 +129,11 @@ export default function Team() {
                                 </div>
 
                                 {/* Info bar */}
-                                <div className="relative p-4 md:p-5 border-t border-gray-800">
+                                <div className="relative p-2.5 md:p-5 border-t border-gray-800">
                                     <div className="flex justify-between items-center">
                                         <div>
                                             <h3
-                                                className="text-sm md:text-lg uppercase text-white tracking-tight"
+                                                className="text-[10px] md:text-lg uppercase text-white tracking-tight leading-tight"
                                                 style={{ fontFamily: 'var(--font-display)' }}
                                             >
                                                 {member.name}
@@ -142,7 +142,7 @@ export default function Team() {
                                                 {member.role}
                                             </span>
                                         </div>
-                                        <div className="w-8 h-8 md:w-10 md:h-10 border border-gray-700 flex items-center justify-center group-hover:bg-[var(--color-primary)] group-hover:border-[var(--color-primary)] transition-all duration-400">
+                                        <div className="hidden md:flex w-8 h-8 md:w-10 md:h-10 border border-gray-700 items-center justify-center group-hover:bg-[var(--color-primary)] group-hover:border-[var(--color-primary)] transition-all duration-400">
                                             <span className="material-symbols-outlined text-sm md:text-lg text-gray-600 group-hover:text-black transition-colors">
                                                 arrow_outward
                                             </span>

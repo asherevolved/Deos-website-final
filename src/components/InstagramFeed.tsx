@@ -101,7 +101,7 @@ export default function InstagramFeed() {
                     style={{ fontFamily: 'var(--font-display)' }}
                 >
                     We're on{' '}
-                    <span className="text-outline-thick">Instagram</span>
+                    <span className="text-outline md:text-outline-thick">Instagram</span>
                 </h2>
             </div>
 

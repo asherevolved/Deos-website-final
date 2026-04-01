@@ -114,19 +114,20 @@ export default function WhatWeDo() {
             );
 
             // Service rows stagger in
+            const isMobile = window.innerWidth < 768;
             if (listRef.current) {
                 const rows = listRef.current.querySelectorAll('.service-row');
                 rows.forEach((row, i) => {
                     gsap.fromTo(
                         row,
-                        { opacity: 0, y: 30 },
+                        { opacity: 0, y: isMobile ? 15 : 30 },
                         {
                             opacity: 1,
                             y: 0,
-                            duration: 0.9,
+                            duration: isMobile ? 0.5 : 0.9,
                             ease: 'power3.out',
-                            delay: i * 0.1,
-                            scrollTrigger: { trigger: listRef.current, start: 'top 80%' },
+                            delay: isMobile ? i * 0.04 : i * 0.1,
+                            scrollTrigger: { trigger: isMobile ? row : listRef.current, start: 'top 85%' },
                         }
                     );
                 });
@@ -166,7 +167,7 @@ export default function WhatWeDo() {
                         className="text-[12vw] md:text-[10vw] lg:text-[8vw] leading-[0.85] uppercase text-white tracking-tighter"
                         style={{ fontFamily: 'var(--font-display)' }}
                     >
-                        What <span className="text-outline-thick">We</span> Do
+                        What <span className="text-outline md:text-outline-thick">We</span> Do
                     </h2>
                 </div>
 
@@ -206,7 +207,7 @@ export default function WhatWeDo() {
 
                 <div
                     ref={listRef}
-                    onMouseLeave={() => { setOpenIndex(null); setHoveredIndex(null); }}
+                    onMouseLeave={() => { if (window.innerWidth >= 1024) { setOpenIndex(null); setHoveredIndex(null); } }}
                     className="relative flex"
                 >
                     {/* Left: Service list */}
@@ -217,7 +218,7 @@ export default function WhatWeDo() {
                                 <div
                                     key={idx}
                                     className="service-row relative z-0 border-t border-gray-800/70 overflow-hidden"
-                                    onMouseEnter={() => { setOpenIndex(idx); setHoveredIndex(idx); }}
+                                    onMouseEnter={() => { if (window.innerWidth >= 1024) { setOpenIndex(idx); setHoveredIndex(idx); } }}
                                 >
                                     <button
                                         className="relative z-10 w-full text-left py-7 md:py-8 flex items-center justify-between gap-6 group cursor-pointer"
@@ -230,7 +231,7 @@ export default function WhatWeDo() {
                                             </span>
                                             <span
                                                 className={[
-                                                    'text-2xl md:text-3xl lg:text-4xl uppercase leading-tight tracking-tight transition-colors duration-300',
+                                                    'text-lg md:text-3xl lg:text-4xl uppercase leading-tight tracking-tight transition-colors duration-300',
                                                     isOpen
                                                         ? 'text-[var(--color-primary)]'
                                                         : 'text-white group-hover:text-[var(--color-primary)]',
