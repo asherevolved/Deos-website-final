@@ -13,13 +13,17 @@ export default function CustomCursor() {
         // Point is on the right side of the inner mirrored image, so xPercent is -85.
         gsap.set(cursor, { xPercent: -85, yPercent: -15, x: -100, y: -100 });
 
+        // Only hide native cursor on desktop
+        const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+        if (!isDesktop) return;
+
         // Hide cursor natively
         document.documentElement.style.cursor = 'none';
 
         // Hide link cursors
         const style = document.createElement('style');
         style.innerHTML = `
-            * { cursor: none !important; }
+            @media (min-width: 768px) { * { cursor: none !important; } }
         `;
         document.head.appendChild(style);
 

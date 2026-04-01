@@ -15,6 +15,8 @@ const clients = [
   { src: '/clients/WhatsApp_Image_2026-03-24_at_4.11.56_PM-removebg-preview.png', alt: 'Client 1' },
   { src: '/clients/images-removebg-preview.png', alt: 'Client 2' },
   { src: '/clients/sunburnunion_vel5hwh0mj.png', alt: 'Sunburn Union' },
+  { src: '/clients/WhatsApp_Image_2026-03-27_at_3.51.54_PM-removebg-preview.png', alt: 'Client 3' },
+  { src: '/clients/WhatsApp_Image_2026-03-27_at_3.49.58_PM-removebg-preview.png', alt: 'Client 4' },
 ];
 
 export default function ClientsSection() {

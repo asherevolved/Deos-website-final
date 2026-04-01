@@ -10,19 +10,18 @@ export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
-        // Animate nav line width on scroll
+        // Animate nav line width on scroll — use toggleActions on mobile instead of scrub
+        const isMobile = window.innerWidth < 768;
         gsap.fromTo(
             lineRef.current,
             { scaleX: 0 },
             {
                 scaleX: 1,
                 ease: 'none',
-                scrollTrigger: {
-                    trigger: document.body,
-                    start: '100px top',
-                    end: '200px top',
-                    scrub: true,
-                },
+                ...(isMobile
+                    ? { duration: 0.4, scrollTrigger: { trigger: document.body, start: '100px top', toggleActions: 'play none none reverse' } }
+                    : { scrollTrigger: { trigger: document.body, start: '100px top', end: '200px top', scrub: true } }
+                ),
             }
         );
     }, []);

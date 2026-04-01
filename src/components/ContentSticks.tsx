@@ -12,23 +12,24 @@ export default function ContentSticks() {
     const line4 = useRef<HTMLSpanElement>(null);
     const handRef = useRef<HTMLSpanElement>(null);
     const descRef = useRef<HTMLDivElement>(null);
-    const wipeRef = useRef<HTMLDivElement>(null);
+
 
     useEffect(() => {
         const ctx = gsap.context(() => {
             const lines = [line1.current, line2.current, line3.current, line4.current];
+            const isMobile = window.innerWidth < 768;
 
             // Each line slides up and fades in on scroll
             lines.forEach((line, i) => {
                 gsap.fromTo(
                     line,
-                    { y: 40, opacity: 0 },
+                    { y: isMobile ? 20 : 40, opacity: 0 },
                     {
                         y: 0,
                         opacity: 1,
                         duration: 0.9,
                         ease: 'power3.out',
-                        delay: i * 0.12,
+                        delay: i * 0.08,
                         scrollTrigger: {
                             trigger: sectionRef.current,
                             start: 'top 85%',
@@ -37,17 +38,19 @@ export default function ContentSticks() {
                     }
                 );
 
-                // Subtle parallax on scroll
-                gsap.to(line, {
-                    y: (i % 2 === 0 ? -20 : 20) * (0.5 + i * 0.1),
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: 'top bottom',
-                        end: 'bottom top',
-                        scrub: 2,
-                    },
-                });
+                // Subtle parallax on scroll — skip on mobile
+                if (!isMobile) {
+                    gsap.to(line, {
+                        y: (i % 2 === 0 ? -20 : 20) * (0.5 + i * 0.1),
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: sectionRef.current,
+                            start: 'top bottom',
+                            end: 'bottom top',
+                            scrub: 2,
+                        },
+                    });
+                }
             });
 
             // Handwritten text bounce
@@ -78,22 +81,9 @@ export default function ContentSticks() {
                 }
             );
 
-            // Wipe transition — dark overlay rises from bottom
-            gsap.fromTo(
-                wipeRef.current,
-                { scaleY: 0 },
-                {
-                    scaleY: 1,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: '80% center',
-                        end: 'bottom center',
-                        scrub: true,
-                    },
-                }
-            );
-        }, sectionRef);
+
+                    }, sectionRef);
+
 
         return () => ctx.revert();
     }, []);
@@ -123,10 +113,10 @@ export default function ContentSticks() {
                     className="uppercase leading-none text-white"
                     style={{ fontFamily: 'var(--font-display)' }}
                 >
-                    <span ref={line1} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] tracking-tighter pb-2">Content</span>
-                    <span ref={line2} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] text-outline-thick tracking-tighter pb-2">That Sticks</span>
-                    <span ref={line3} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] tracking-tighter pb-2">Stories</span>
-                    <span ref={line4} className="block text-[11vw] md:text-[11vw] lg:text-[10vw] text-outline-thick tracking-tighter pb-2">That Stay</span>
+                    <span ref={line1} className="block text-[9vw] md:text-[11vw] lg:text-[10vw] tracking-tighter pb-1 md:pb-2">Content</span>
+                    <span ref={line2} className="block text-[9vw] md:text-[11vw] lg:text-[10vw] text-outline md:text-outline-thick tracking-tighter pb-1 md:pb-2">That Sticks</span>
+                    <span ref={line3} className="block text-[9vw] md:text-[11vw] lg:text-[10vw] tracking-tighter pb-1 md:pb-2">Stories</span>
+                    <span ref={line4} className="block text-[9vw] md:text-[11vw] lg:text-[10vw] text-outline md:text-outline-thick tracking-tighter pb-1 md:pb-2">That Stay</span>
                 </h2>
             </div>
 
@@ -140,13 +130,6 @@ export default function ContentSticks() {
                 </div>
             </div>
 
-            {/* Wipe transition to next section */}
-            <div
-                ref={wipeRef}
-                className="absolute bottom-0 left-0 right-0 h-[25%] bg-[var(--color-bg-dark)] origin-bottom z-20"
-                style={{ transform: 'scaleY(0)' }}
-            />
         </section>
     );
 }
-

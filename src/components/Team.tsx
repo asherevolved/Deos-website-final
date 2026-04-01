@@ -56,21 +56,22 @@ export default function Team() {
             );
 
             // Stagger each card in
+            const isMobile = window.innerWidth < 768;
             cardsRef.current.forEach((card, i) => {
                 if (!card) return;
                 gsap.fromTo(
                     card,
-                    { y: 80, opacity: 0, scale: 0.95 },
+                    { y: isMobile ? 30 : 80, opacity: 0, scale: isMobile ? 1 : 0.95 },
                     {
                         y: 0,
                         opacity: 1,
                         scale: 1,
-                        duration: 1,
-                        delay: i * 0.15,
+                        duration: isMobile ? 0.6 : 1,
+                        delay: isMobile ? i * 0.05 : i * 0.15,
                         ease: 'power3.out',
                         scrollTrigger: {
                             trigger: card,
-                            start: 'top 85%',
+                            start: 'top 90%',
                         },
                     }
                 );

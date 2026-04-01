@@ -14,8 +14,9 @@ export default function Hero() {
         const ctx = gsap.context(() => {
             const lines = [line1.current, line2.current, line3.current];
 
+            const isMobile = window.innerWidth < 768;
             // Set initial state
-            gsap.set(lines, { y: 200, opacity: 0, skewY: 8 });
+            gsap.set(lines, { y: isMobile ? 80 : 200, opacity: 0, skewY: isMobile ? 4 : 8 });
             gsap.set(taglineRef.current, { opacity: 0, y: 40 });
             gsap.set(scrollCta.current, { opacity: 0 });
             gsap.set(edgeLabelsRef.current, { opacity: 0 });
@@ -63,7 +64,7 @@ export default function Hero() {
                     >
                         NOT YOUR
                     </span>
-                    <span ref={line2} className="block text-[18vw] md:text-[13vw] lg:text-[12vw] text-outline-thick"
+                    <span ref={line2} className="block text-[15vw] md:text-[13vw] lg:text-[12vw] text-outline md:text-outline-thick"
                         style={{ fontFamily: 'var(--font-display)', fontWeight: 900 }}
                     >
                         REGULAR
@@ -84,9 +85,9 @@ export default function Hero() {
             </div>
 
             {/* Scroll indicator */}
-            <div ref={scrollCta} className="absolute bottom-12 left-1/2 -translate-x-1/2 z-[3] flex flex-col items-center gap-3">
+            <div ref={scrollCta} className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-[3] flex flex-col items-center gap-2 md:gap-3">
                 <span className="text-[9px] uppercase tracking-[0.4em] text-gray-500 font-bold">Scroll</span>
-                <div className="w-[1px] h-16 relative overflow-hidden">
+                <div className="w-[1px] h-10 md:h-16 relative overflow-hidden">
                     <div className="absolute w-full h-full bg-gradient-to-b from-[var(--color-primary)] to-transparent animate-scroll-pulse" />
                 </div>
             </div>

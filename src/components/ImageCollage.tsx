@@ -18,6 +18,7 @@ export default function ImageCollage() {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            const isMobile = window.innerWidth < 768;
             // Ensure image starts fully flush
             gsap.set(imageRef.current, { scale: 1, borderRadius: '0px' });
 
@@ -31,9 +32,12 @@ export default function ImageCollage() {
                     scrollTrigger: {
                         trigger: sectionRef.current,
                         start: 'top 40%',
-                        end: 'bottom bottom',
-                        scrub: 1,
+                        ...(isMobile
+                            ? { toggleActions: 'play none none none' }
+                            : { end: 'bottom bottom', scrub: 1 }
+                        ),
                     },
+                    duration: isMobile ? 0.8 : undefined,
                 }
             );
 
@@ -62,7 +66,7 @@ export default function ImageCollage() {
             ref={sectionRef}
             // Use native CSS sticky to create the curtain effect without GSAP DOM un-flow glitching!
             className="sticky top-0 z-0 overflow-hidden bg-[var(--color-bg-deep)]"
-            style={{ height: '100vh' }}
+            style={{ height: '100svh' }}
         >
             {/* Full-bleed image container */}
             <div

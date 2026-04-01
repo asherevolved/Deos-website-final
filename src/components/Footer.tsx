@@ -10,10 +10,10 @@ export default function Footer() {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Very subtle parallax slide up for the yellow box, while the black section smoothly reveals it
+            const isMobile = window.innerWidth < 768;
             gsap.fromTo(
                 yellowBoxRef.current,
-                { y: 80, opacity: 0.95 },
+                { y: isMobile ? 30 : 80, opacity: 0.95 },
                 {
                     y: 0,
                     opacity: 1,
@@ -22,8 +22,10 @@ export default function Footer() {
                     scrollTrigger: {
                         trigger: sectionRef.current,
                         start: 'top 85%',
-                        end: 'top 20%',
-                        scrub: 1,
+                        ...(isMobile
+                            ? { toggleActions: 'play none none none' }
+                            : { end: 'top 20%', scrub: 1 }
+                        ),
                     },
                 }
             );
@@ -47,15 +49,15 @@ export default function Footer() {
             {/* The structural solid yellow box from the images (using DEOS theme #EAB308) */}
             <div 
                 ref={yellowBoxRef}
-                className="mx-4 md:mx-6 lg:mx-8 bg-[var(--color-primary)] rounded-[1.5rem] p-4 md:p-6 lg:p-8 relative min-h-[600px] flex flex-col justify-between"
+                className="mx-3 md:mx-6 lg:mx-8 bg-[var(--color-primary)] rounded-[1rem] md:rounded-[1.5rem] p-4 md:p-6 lg:p-8 relative min-h-0 md:min-h-[600px] flex flex-col justify-between"
             >
                 {/* TOP PILL BAR */}
-                <div className="bg-[#050505] text-white rounded-[1rem] flex justify-between items-center px-6 py-4 md:py-5">
-                    <div 
-                        className="flex items-center gap-1 uppercase tracking-tighter text-2xl md:text-3xl"
+                <div className="bg-[#050505] text-white rounded-[0.75rem] md:rounded-[1rem] flex justify-between items-center px-4 md:px-6 py-3 md:py-5">
+                    <div
+                        className="flex items-center gap-1 uppercase tracking-tighter text-base md:text-2xl lg:text-3xl"
                         style={{ fontFamily: 'var(--font-display)' }}
                     >
-                        DEOS ORIGINALS<span className="text-[#EAB308] font-sans text-xl ml-1">{'<'}</span>
+                        DEOS ORIGINALS<span className="text-[#EAB308] font-sans text-sm md:text-xl ml-1">{'<'}</span>
                     </div>
                     
                     <a 
@@ -78,12 +80,12 @@ export default function Footer() {
                 </div>
 
                 {/* MIDDLE / BOTTOM INFO */}
-                <div className="flex flex-col lg:flex-row justify-between items-end mt-24 lg:mt-32 gap-16 px-2 md:px-4 lg:px-6 pb-4">
+                <div className="flex flex-col lg:flex-row justify-between items-end mt-10 md:mt-24 lg:mt-32 gap-8 md:gap-16 px-1 md:px-4 lg:px-6 pb-4">
                     
                     {/* LEFT COLUMN: GET IN TOUCH & SOCIALS */}
                     <div className="w-full lg:w-3/5 flex flex-col">
                         <h2 
-                            className="text-[#1a1a1a] text-[14vw] sm:text-[11vw] lg:text-[8vw] leading-[0.8] tracking-tighter mb-6 uppercase"
+                            className="text-[#1a1a1a] text-[11vw] sm:text-[11vw] lg:text-[8vw] leading-[0.8] tracking-tighter mb-4 md:mb-6 uppercase"
                             style={{ fontFamily: 'var(--font-display)' }}
                         >
                             Get In Touch
@@ -101,7 +103,7 @@ export default function Footer() {
                     </div>
 
                     {/* RIGHT COLUMN: CONTACT INFO & BACK TO TOP */}
-                    <div className="w-full lg:w-2/5 flex flex-col justify-end text-[#1a1a1a] text-base md:text-xl space-y-5 md:space-y-6 uppercase tracking-tighter pb-2 lg:pb-6" style={{ fontFamily: 'var(--font-display)' }}>
+                    <div className="w-full lg:w-2/5 flex flex-col justify-end text-[#1a1a1a] text-sm md:text-xl space-y-4 md:space-y-6 uppercase tracking-tighter pb-2 lg:pb-6" style={{ fontFamily: 'var(--font-display)' }}>
                         <div className="flex items-start gap-4 lg:gap-8">
                             <span className="w-12 text-[#1a1a1a]" style={{ fontFamily: 'var(--font-display)' }}>H.Q.</span>
                             <span>Mysore, India</span>

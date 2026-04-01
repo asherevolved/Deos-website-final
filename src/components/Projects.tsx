@@ -23,6 +23,8 @@ const presentClients = [
     { src: '/clients/Gokulam Logo 1 orange.png', alt: 'Gokulam' },
     { src: '/clients/RoyalBluColor.png', alt: 'Royal Blu' },
     { src: '/clients/SMSL_blackwhite_logo.png', alt: 'SMSL' },
+    { src: '/clients/WhatsApp_Image_2026-03-27_at_3.51.54_PM-removebg-preview.png', alt: 'Present Client 1' },
+    { src: '/clients/WhatsApp_Image_2026-03-27_at_3.49.58_PM-removebg-preview.png', alt: 'Present Client 2' },
 ];
 
 export default function Projects() {

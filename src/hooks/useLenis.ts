@@ -9,10 +9,12 @@ export function useLenis() {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
+        const isMobile = window.innerWidth < 768;
+
         const lenis = new Lenis({
-            lerp: 0.05,
+            lerp: isMobile ? 0.1 : 0.05,
             smoothWheel: true,
-            touchMultiplier: 2,
+            touchMultiplier: 1,
             infinite: false,
             autoRaf: false, // We'll use GSAP's ticker instead for perfect sync
         });

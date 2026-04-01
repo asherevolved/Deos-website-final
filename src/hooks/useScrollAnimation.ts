@@ -86,12 +86,14 @@ export function useScrollAnimation<T extends HTMLElement>(
 
         const { from, to } = getFromTo();
 
+        const isMobile = window.innerWidth < 768;
+
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: el,
                 start: triggerStart,
                 end: triggerEnd,
-                scrub: type === 'parallax' ? 1 : scrub,
+                scrub: isMobile ? false : (type === 'parallax' ? 1 : scrub),
                 toggleActions: once ? 'play none none none' : 'play reverse play reverse',
             },
         });
@@ -134,6 +136,9 @@ export function useParallax<T extends HTMLElement>(
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
+
+        // Skip parallax on mobile for performance
+        if (window.innerWidth < 768) return;
 
         const tl = gsap.to(el, {
             y: () => speed * 100,
