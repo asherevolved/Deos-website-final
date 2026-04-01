@@ -6,12 +6,12 @@ import { InfiniteSlider } from '@/components/ui/InfiniteSlider';
 gsap.registerPlugin(ScrollTrigger);
 
 const clients = [
-  { src: '/clients/Greeco_Final_logo_page-0001-removebg-preview (1).png', alt: 'Greeco' },
+  { src: '/clients/greeco-logo.png', alt: 'Greeco' },
   { src: '/clients/LOUNGE29-LOGO.png', alt: 'Lounge 29' },
   { src: '/clients/MYSTUC_TAVERN_BANNER_5x6_page-0001-removebg-preview.png', alt: 'Mystuc Tavern' },
-  { src: '/clients/Pataka Logo.png', alt: 'Pataka' },
+  { src: '/clients/pataka-logo.png', alt: 'Pataka' },
   { src: '/clients/SVJ.png', alt: 'SVJ' },
-  { src: '/clients/The pearl.png', alt: 'The Pearl' },
+  { src: '/clients/the-pearl.png', alt: 'The Pearl' },
   { src: '/clients/WhatsApp_Image_2026-03-24_at_4.11.56_PM-removebg-preview.png', alt: 'Client 1' },
   { src: '/clients/images-removebg-preview.png', alt: 'Client 2' },
   { src: '/clients/sunburnunion_vel5hwh0mj.png', alt: 'Sunburn Union' },

@@ -6,21 +6,21 @@ import { InfiniteSlider } from '@/components/ui/InfiniteSlider';
 gsap.registerPlugin(ScrollTrigger);
 
 const clients = [
-    { src: '/clients/Greeco_Final_logo_page-0001-removebg-preview (1).png', alt: 'Greeco' },
+    { src: '/clients/greeco-logo.png', alt: 'Greeco' },
     { src: '/clients/LOUNGE29-LOGO.png', alt: 'Lounge 29' },
     { src: '/clients/MYSTUC_TAVERN_BANNER_5x6_page-0001-removebg-preview.png', alt: 'Mystuc Tavern' },
-    { src: '/clients/Pataka Logo.png', alt: 'Pataka' },
+    { src: '/clients/pataka-logo.png', alt: 'Pataka' },
     { src: '/clients/SVJ.png', alt: 'SVJ' },
-    { src: '/clients/The pearl.png', alt: 'The Pearl' },
+    { src: '/clients/the-pearl.png', alt: 'The Pearl' },
     { src: '/clients/WhatsApp_Image_2026-03-24_at_4.11.56_PM-removebg-preview.png', alt: 'Client 1' },
     { src: '/clients/images-removebg-preview.png', alt: 'Client 2' },
     { src: '/clients/sunburnunion_vel5hwh0mj.png', alt: 'Sunburn Union' },
 ];
 
 const presentClients = [
-    { src: '/clients/Color Logo.png', alt: 'Color Logo' },
+    { src: '/clients/color-logo.png', alt: 'Color Logo' },
     { src: '/clients/ElanBar-03.png', alt: 'Elan Bar' },
-    { src: '/clients/Gokulam Logo 1 orange.png', alt: 'Gokulam' },
+    { src: '/clients/gokulam-logo.png', alt: 'Gokulam' },
     { src: '/clients/RoyalBluColor.png', alt: 'Royal Blu' },
     { src: '/clients/SMSL_blackwhite_logo.png', alt: 'SMSL' },
     { src: '/clients/WhatsApp_Image_2026-03-27_at_3.51.54_PM-removebg-preview.png', alt: 'Present Client 1' },
@@ -89,32 +89,24 @@ export default function Projects() {
     const LogoCard = ({ client, size = 'lg', isPresent = false }: { client: typeof clients[0]; size?: 'sm' | 'lg'; isPresent?: boolean }) => {
         const isMumbaiChai = client.src === '/clients/images-removebg-preview.png';
         const isSvj = client.src === '/clients/SVJ.png';
-        const isWhiteTeak = client.src === '/clients/Color Logo.png';
+        const isWhiteTeak = client.src === '/clients/color-logo.png';
         const isSmsl = client.src === '/clients/SMSL_blackwhite_logo.png';
         const isWorkedSvj = !isPresent && isSvj;
         const isPresentWhiteTeak = isPresent && isWhiteTeak;
         const isPresentSmsl = isPresent && isSmsl;
 
-        const isSmallSize = size === 'sm';
-        const baseW = isPresentSmsl || isWorkedSvj ? 260 : (isMumbaiChai ? 240 : 200);
-        const baseH = isSmallSize ? 90 : 120;
-
         return (
             <div
-                className="flex items-center justify-center"
+                className="flex items-center justify-center shrink-0"
                 style={{
-                    minWidth: `${baseW}px`,
-                    height: `${baseH}px`,
+                    width: size === 'sm' ? '160px' : '260px',
+                    height: size === 'sm' ? '80px' : '120px',
                 }}
             >
                 <img
                     src={client.src}
                     alt={client.alt}
-                    className={isPresentSmsl || isWorkedSvj
-                        ? 'w-[200px] md:w-[300px] h-auto max-h-full object-contain select-none pointer-events-none'
-                        : isMumbaiChai
-                        ? 'w-[180px] md:w-[280px] h-auto max-h-full object-contain select-none pointer-events-none'
-                        : 'w-[150px] md:w-[220px] h-auto max-h-full object-contain select-none pointer-events-none'}
+                    className="max-w-full max-h-full object-contain select-none pointer-events-none"
                     style={{
                         filter: isPresentWhiteTeak || isWorkedSvj ? 'brightness(0) invert(1)' : 'brightness(1.15) contrast(1.15)'
                     }}
@@ -123,6 +115,34 @@ export default function Projects() {
             </div>
         );
     };
+
+    /* ── CSS marquee for mobile — no JS measurement needed ── */
+    const MobileMarquee = ({ items, isPresent = false }: { items: typeof clients; isPresent?: boolean }) => (
+        <div className="relative overflow-hidden">
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-8 z-10" style={{ background: 'linear-gradient(to right, var(--color-bg-deep), transparent)' }} />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-8 z-10" style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }} />
+            <div className="flex animate-marquee" style={{ width: 'max-content' }}>
+                {[...items, ...items].map((c, i) => (
+                    <div
+                        key={`${c.alt}-${i}`}
+                        className="flex items-center justify-center shrink-0 mx-3"
+                        style={{ width: '150px', height: '70px' }}
+                    >
+                        <img
+                            src={c.src}
+                            alt={c.alt}
+                            className="max-w-full max-h-full object-contain"
+                            style={{
+                                filter: (isPresent && c.src === '/clients/color-logo.png') || (!isPresent && c.src === '/clients/SVJ.png')
+                                    ? 'brightness(0) invert(1)' : 'brightness(1.15) contrast(1.15)'
+                            }}
+                            loading="eager"
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 
     /* ── Mobile layout ── */
     if (isMobile) {
@@ -142,34 +162,24 @@ export default function Projects() {
                     <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
                 </div>
 
-                    <div className="relative mb-10 rounded-sm">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10" style={{ background: 'linear-gradient(to right, var(--color-bg-deep), transparent)' }} />
-                        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10" style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }} />
-                        <InfiniteSlider gap={16} speed={50} speedOnHover={20}>
-                            {clients.map((c) => <LogoCard key={c.alt} client={c} size="sm" />)}
-                        </InfiniteSlider>
-                    </div>
+                <div className="mb-10">
+                    <MobileMarquee items={clients} />
+                </div>
 
-                    <div className="mb-6 mt-8">
-                        <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-4">
-                            Current Work
-                        </span>
-                        <h3
-                            className="text-[10vw] uppercase text-white leading-[0.85] tracking-tighter mb-6"
-                            style={{ fontFamily: 'var(--font-display)', fontWeight: 900 }}
-                        >
-                            Present Clientele
-                        </h3>
-                        <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
-                    </div>
+                <div className="mb-6 mt-8">
+                    <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-4">
+                        Current Work
+                    </span>
+                    <h3
+                        className="text-[10vw] uppercase text-white leading-[0.85] tracking-tighter mb-6"
+                        style={{ fontFamily: 'var(--font-display)', fontWeight: 900 }}
+                    >
+                        Present Clientele
+                    </h3>
+                    <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
+                </div>
 
-                    <div className="relative rounded-sm">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10" style={{ background: 'linear-gradient(to right, var(--color-bg-deep), transparent)' }} />
-                        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10" style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }} />
-                        <InfiniteSlider gap={16} speed={50} speedOnHover={20}>
-                            {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} size="sm" isPresent />)}
-                        </InfiniteSlider>
-                    </div>
+                <MobileMarquee items={presentClients} isPresent />
             </div>
         );
     }
