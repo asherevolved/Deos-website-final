@@ -83,6 +83,10 @@ body {
   background: var(--color-primary);
 }
 
+/* ── Hide scrollbar utility ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* ── Text outline utility ── */
 .text-outline {
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);

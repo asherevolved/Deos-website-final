@@ -116,31 +116,29 @@ export default function Projects() {
         );
     };
 
-    /* ── CSS marquee for mobile — no JS measurement needed ── */
-    const MobileMarquee = ({ items, isPresent = false }: { items: typeof clients; isPresent?: boolean }) => (
-        <div className="relative overflow-hidden">
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-8 z-10" style={{ background: 'linear-gradient(to right, var(--color-bg-deep), transparent)' }} />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-8 z-10" style={{ background: 'linear-gradient(to left, var(--color-bg-deep), transparent)' }} />
-            <div className="flex animate-marquee" style={{ width: 'max-content' }}>
-                {[...items, ...items].map((c, i) => (
-                    <div
-                        key={`${c.alt}-${i}`}
-                        className="flex items-center justify-center shrink-0 mx-3"
-                        style={{ width: '150px', height: '70px' }}
-                    >
-                        <img
-                            src={c.src}
-                            alt={c.alt}
-                            className="max-w-full max-h-full object-contain"
-                            style={{
-                                filter: (isPresent && c.src === '/clients/color-logo.png') || (!isPresent && c.src === '/clients/SVJ.png')
-                                    ? 'brightness(0) invert(1)' : 'brightness(1.15) contrast(1.15)'
-                            }}
-                            loading="eager"
-                        />
-                    </div>
-                ))}
-            </div>
+    /* ── Mobile logo grid — wrapping grid, no overflow issues ── */
+    const MobileLogoRow = ({ items, isPresent = false }: { items: typeof clients; isPresent?: boolean }) => (
+        <div className="grid grid-cols-3 gap-4 py-2">
+            {items.map((c, i) => (
+                <div
+                    key={`${c.alt}-${i}`}
+                    className="flex items-center justify-center"
+                    style={{ height: '60px' }}
+                >
+                    <img
+                        src={c.src}
+                        alt={c.alt}
+                        style={{
+                            maxWidth: '100%',
+                            maxHeight: '100%',
+                            objectFit: 'contain',
+                            filter: (isPresent && c.src === '/clients/color-logo.png') || (!isPresent && c.src === '/clients/SVJ.png')
+                                ? 'brightness(0) invert(1)' : 'brightness(1.15) contrast(1.15)',
+                        }}
+                        loading="eager"
+                    />
+                </div>
+            ))}
         </div>
     );
 
@@ -163,7 +161,7 @@ export default function Projects() {
                 </div>
 
                 <div className="mb-10">
-                    <MobileMarquee items={clients} />
+                    <MobileLogoRow items={clients} />
                 </div>
 
                 <div className="mb-6 mt-8">
@@ -179,7 +177,7 @@ export default function Projects() {
                     <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
                 </div>
 
-                <MobileMarquee items={presentClients} isPresent />
+                <MobileLogoRow items={presentClients} isPresent />
             </div>
         );
     }
