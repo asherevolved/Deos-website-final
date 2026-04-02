@@ -33,7 +33,9 @@ export default function Projects() {
     const overlayRef = useRef<HTMLDivElement>(null);
     const revealRef = useRef<HTMLDivElement>(null);
     const subtitleRef = useRef<HTMLSpanElement>(null);
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(() =>
+        typeof window !== 'undefined' ? window.innerWidth < 768 : false
+    );
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -117,30 +119,48 @@ export default function Projects() {
     };
 
     /* ── Mobile logo grid — wrapping grid, no overflow issues ── */
-    const MobileLogoRow = ({ items, isPresent = false }: { items: typeof clients; isPresent?: boolean }) => (
-        <div className="grid grid-cols-3 gap-4 py-2">
-            {items.map((c, i) => (
-                <div
-                    key={`${c.alt}-${i}`}
-                    className="flex items-center justify-center"
-                    style={{ height: '60px' }}
-                >
-                    <img
-                        src={c.src}
-                        alt={c.alt}
-                        style={{
-                            maxWidth: '100%',
-                            maxHeight: '100%',
-                            objectFit: 'contain',
-                            filter: (isPresent && c.src === '/clients/color-logo.png') || (!isPresent && c.src === '/clients/SVJ.png')
-                                ? 'brightness(0) invert(1)' : 'brightness(1.15) contrast(1.15)',
-                        }}
-                        loading="eager"
-                    />
-                </div>
-            ))}
-        </div>
-    );
+    const MobileLogoRow = ({ items, isPresent = false }: { items: typeof clients; isPresent?: boolean }) => {
+        // Logos that are colorful / already visible on dark backgrounds (don't invert)
+        const colorLogos = [
+            '/clients/ElanBar-03.png',
+            '/clients/RoyalBluColor.png',
+            '/clients/Gokulam Logo 1 orange.png',
+            '/clients/gokulam-logo.png',
+            '/clients/LOUNGE29-LOGO.png',
+            '/clients/WhatsApp_Image_2026-03-27_at_3.51.54_PM-removebg-preview.png',
+            '/clients/WhatsApp_Image_2026-03-27_at_3.49.58_PM-removebg-preview.png',
+            '/clients/WhatsApp_Image_2026-03-24_at_4.11.56_PM-removebg-preview.png',
+        ];
+        return (
+            <div className="grid grid-cols-3 gap-4 py-2">
+                {items.map((c, i) => {
+                    const isColor = colorLogos.includes(c.src);
+                    const imgFilter = isColor
+                        ? 'brightness(1.1) contrast(1.1)'
+                        : 'brightness(0) invert(1)'; // make dark/greyscale logos white
+                    return (
+                        <div
+                            key={`${c.alt}-${i}`}
+                            className="flex items-center justify-center"
+                            style={{ height: '60px' }}
+                        >
+                            <img
+                                src={c.src}
+                                alt={c.alt}
+                                style={{
+                                    maxWidth: '100%',
+                                    maxHeight: '100%',
+                                    objectFit: 'contain',
+                                    filter: imgFilter,
+                                }}
+                                loading="eager"
+                            />
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    };
 
     /* ── Mobile layout ── */
     if (isMobile) {
