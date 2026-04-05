@@ -89,13 +89,12 @@ export default function Projects() {
 
     /* ── Logo card shared render ── */
     const LogoCard = ({ client, size = 'lg', isPresent = false }: { client: typeof clients[0]; size?: 'sm' | 'lg'; isPresent?: boolean }) => {
-        const isMumbaiChai = client.src === '/clients/images-removebg-preview.png';
         const isSvj = client.src === '/clients/SVJ.png';
         const isWhiteTeak = client.src === '/clients/color-logo.png';
         const isSmsl = client.src === '/clients/SMSL_blackwhite_logo.png';
         const isWorkedSvj = !isPresent && isSvj;
         const isPresentWhiteTeak = isPresent && isWhiteTeak;
-        const isPresentSmsl = isPresent && isSmsl;
+        void isSmsl; // referenced for future use
 
         return (
             <div
@@ -119,7 +118,7 @@ export default function Projects() {
     };
 
     /* ── Mobile logo grid — wrapping grid, no overflow issues ── */
-    const MobileLogoRow = ({ items, isPresent = false }: { items: typeof clients; isPresent?: boolean }) => {
+    const MobileLogoRow = ({ items }: { items: typeof clients }) => {
         // Logos that are colorful / already visible on dark backgrounds (don't invert)
         const colorLogos = [
             '/clients/ElanBar-03.png',
@@ -197,7 +196,7 @@ export default function Projects() {
                     <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent" />
                 </div>
 
-                <MobileLogoRow items={presentClients} isPresent />
+                <MobileLogoRow items={presentClients} />
             </div>
         );
     }
