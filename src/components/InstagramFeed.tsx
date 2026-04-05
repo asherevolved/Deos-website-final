@@ -1,116 +1,156 @@
-import { useEffect } from 'react';
+import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-/** Selectors that match the Elfsight free-plan badge in all its forms */
-const BADGE_SELECTORS = [
-    '.eapps-widget-toolbar',
-    '.eapps-instagram-feed-toolbar',
-    '.eapps-link',
-    '[class*="eapps-widget-toolbar"]',
-    '[class*="eapps-link"]',
-    'a[href*="elfsight.com"]',
-];
+gsap.registerPlugin(ScrollTrigger);
 
-function removeBadges(root: Document | ShadowRoot | Element = document) {
-    BADGE_SELECTORS.forEach((sel) => {
-        try {
-            root.querySelectorAll<HTMLElement>(sel).forEach((el) => {
-                el.remove();
-            });
-        } catch { /* cross-origin iframes will throw — safe to ignore */ }
-    });
+/* ── Inline Instagram SVG ── */
+const InstagramIcon = () => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="w-full h-full"
+        aria-hidden="true"
+    >
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+);
+
+
+
+interface BrandConfig {
+    label: string;
+    instagramUrl: string;
+    logoNode: React.ReactNode;
 }
 
+const brands: BrandConfig[] = [
+    {
+        label: 'Marketing',
+        instagramUrl: 'https://www.instagram.com/deos.originals',
+        logoNode: (
+            <img
+                src="/logo.png"
+                alt="Deos Originals"
+                className="object-contain max-h-28 md:max-h-36 w-auto"
+                loading="lazy"
+            />
+        ),
+    },
+    {
+        label: 'Events',
+        instagramUrl: 'https://www.instagram.com/wedeosofficial/',
+        logoNode: (
+            <img
+                src="/wedeos-logo.png"
+                alt="WeDeos Entertainment"
+                className="object-contain max-h-28 md:max-h-36 w-auto"
+                loading="lazy"
+            />
+        ),
+    },
+];
+
 export default function InstagramFeed() {
-    useEffect(() => {
-        // 1. Load Elfsight script once
-        if (!document.querySelector('script[src="https://elfsightcdn.com/platform.js"]')) {
-            const script = document.createElement('script');
-            script.src = 'https://elfsightcdn.com/platform.js';
-            script.async = true;
-            document.head.appendChild(script);
-        }
+    const sectionRef = useRef<HTMLElement>(null);
 
-        // 2. When the Elfsight popup appears, fix Lenis interference + sizing
-        const POPUP_PATTERNS = [
-            'eapps-instagram-feed-popup',
-            'eapps-popup',
-            'eapps-modal',
-        ];
+    useGSAP(() => {
+        const cards = sectionRef.current?.querySelectorAll<HTMLElement>('.brand-card');
+        if (!cards?.length) return;
 
-        function isPopupEl(el: Element) {
-            return POPUP_PATTERNS.some(p =>
-                Array.from(el.classList).some(c => c.includes(p))
-            );
-        }
-
-        function fixPopup(el: HTMLElement) {
-            // Tell Lenis to not intercept scroll inside this element
-            el.setAttribute('data-lenis-prevent', '');
-            // Also mark all scrollable children
-            el.querySelectorAll<HTMLElement>('*').forEach(child => {
-                const style = window.getComputedStyle(child);
-                if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
-                    child.setAttribute('data-lenis-prevent', '');
-                }
-            });
-        }
-
-        // 3. MutationObserver — badge removal + popup Lenis fix
-        const observer = new MutationObserver((mutations) => {
-            removeBadges(document);
-            document.querySelectorAll('*').forEach((el) => {
-                if (el.shadowRoot) removeBadges(el.shadowRoot);
-            });
-            // Check newly added nodes for popup elements
-            mutations.forEach(m => {
-                m.addedNodes.forEach(node => {
-                    if (node instanceof HTMLElement) {
-                        if (isPopupEl(node)) fixPopup(node);
-                        node.querySelectorAll<HTMLElement>('*').forEach(child => {
-                            if (isPopupEl(child)) fixPopup(child);
-                        });
-                    }
-                });
-            });
-        });
-
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true,
-            attributes: false,
-        });
-
-        // 4. Eager first pass
-        removeBadges(document);
-
-        return () => observer.disconnect();
-    }, []);
+        gsap.fromTo(
+            cards,
+            { opacity: 0, y: 50 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.9,
+                ease: 'power3.out',
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 78%',
+                    once: true,
+                },
+            }
+        );
+    }, { scope: sectionRef });
 
     return (
         <section
+            ref={sectionRef}
             id="instagram"
-            className="py-14 md:py-20 px-5 md:px-12 lg:px-24 bg-[var(--color-bg-deep)] relative"
+            className="py-20 md:py-28 px-5 md:px-12 lg:px-24 bg-[var(--color-bg-deep)]"
         >
-            {/* Section header */}
-            <div className="max-w-7xl mx-auto mb-8 md:mb-10">
-                <span className="text-[11px] uppercase tracking-[0.3em] text-[var(--color-primary)] font-bold block mb-4">
-                    Follow Along
-                </span>
+            {/* ── Heading ── */}
+            <div className="max-w-6xl mx-auto mb-14 md:mb-20">
                 <h2
-                    className="text-4xl md:text-6xl lg:text-7xl uppercase leading-[0.85] text-white tracking-tighter"
+                    className="text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.9] text-white tracking-tighter"
                     style={{ fontFamily: 'var(--font-display)' }}
                 >
-                    We're on{' '}
+                    We're On{' '}
                     <span className="text-outline md:text-outline-thick">Instagram</span>
                 </h2>
             </div>
 
-            {/* Elfsight widget */}
-            <div className="max-w-7xl mx-auto">
-                <div
-                    className="elfsight-app-22f529d4-5e3b-44f8-9fd7-9cbf2ccf6883"
-                    data-elfsight-app-lazy
-                />
+            {/* ── Horizontal rule ── */}
+            <div className="max-w-6xl mx-auto mb-14 md:mb-20">
+                <div className="h-px bg-white/10 w-full" />
+            </div>
+
+            {/* ── Brand columns ── */}
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2">
+                {brands.map((brand, i) => (
+                    <div
+                        key={brand.label}
+                        className={`brand-card flex flex-col items-center gap-10 md:gap-14 py-10 md:py-6 ${
+                            i === 0 ? 'md:border-r md:border-white/10' : ''
+                        } ${i > 0 && brands.length > 1 ? 'border-t border-white/10 md:border-t-0' : ''}`}
+                        style={{ opacity: 0 }}
+                    >
+                        {/* Category label */}
+                        <span
+                            className="text-white text-xl md:text-2xl font-bold underline underline-offset-4 decoration-1 tracking-wide"
+                            style={{ fontFamily: 'var(--font-display)' }}
+                        >
+                            {brand.label}
+                        </span>
+
+                        {/* Logo */}
+                        <div className="flex items-center justify-center" style={{ minHeight: '100px' }}>
+                            {brand.logoNode}
+                        </div>
+
+                        {/* Instagram CTA */}
+                        <a
+                            href={brand.instagramUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Follow ${brand.label} on Instagram`}
+                            className="group relative flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full text-white transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 focus:ring-offset-black"
+                        >
+                            {/* Static ring */}
+                            <span className="absolute inset-0 rounded-full border-[1.5px] border-white/30 group-hover:border-[var(--color-primary)] transition-colors duration-300" />
+                            {/* Hover glow */}
+                            <span
+                                className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                style={{ background: 'radial-gradient(circle, rgba(234,179,8,0.18) 0%, transparent 70%)' }}
+                            />
+                            {/* Icon */}
+                            <span className="relative w-9 h-9 md:w-11 md:h-11 group-hover:text-[var(--color-primary)] transition-colors duration-300">
+                                <InstagramIcon />
+                            </span>
+                        </a>
+                    </div>
+                ))}
             </div>
         </section>
     );

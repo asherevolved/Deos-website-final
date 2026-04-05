@@ -223,15 +223,4 @@ body {
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
-/* ── Hide Elfsight free-plan badge ── */
-.eapps-widget-toolbar,
-.eapps-instagram-feed-toolbar,
-[class*="eapps-widget-toolbar"],
-[class*="eapps-instagram-feed-toolbar"],
-.eapps-link,
-[class*="eapps-link"] {
-  display: none !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
-}
+

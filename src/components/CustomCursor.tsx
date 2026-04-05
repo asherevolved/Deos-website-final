@@ -9,9 +9,8 @@ export default function CustomCursor() {
         const cursor = cursorRef.current;
         if (!cursor) return;
 
-        // Force hotspot offset without conflict with gsap x/y tweens
-        // Point is on the right side of the inner mirrored image, so xPercent is -85.
-        gsap.set(cursor, { xPercent: -85, yPercent: -15, x: -100, y: -100 });
+        // Hotspot pinned to fingertip — upper-left of the image (~15% from left, ~15% from top)
+        gsap.set(cursor, { xPercent: -15, yPercent: -15, x: -100, y: -100 });
 
         // Only hide native cursor on desktop
         const isDesktop = window.matchMedia('(min-width: 768px)').matches;
@@ -58,8 +57,8 @@ export default function CustomCursor() {
                     backgroundImage: 'url(/new-cursor.png)',
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'top right',
-                    filter: 'brightness(0) invert(1) drop-shadow(0px 2px 4px rgba(0,0,0,0.5))'
+                    backgroundPosition: 'top left',
+                    filter: 'invert(1) drop-shadow(0px 2px 4px rgba(0,0,0,0.5))'
                 }}
             />
         </div>
