@@ -88,20 +88,18 @@ export default function Projects() {
     }, [isMobile]);
 
     /* ── Logo card shared render ── */
-    const LogoCard = ({ client, size = 'lg', isPresent = false }: { client: typeof clients[0]; size?: 'sm' | 'lg'; isPresent?: boolean }) => {
+    const LogoCard = ({ client, isPresent = false }: { client: typeof clients[0]; isPresent?: boolean }) => {
         const isSvj = client.src === '/clients/SVJ.png';
         const isWhiteTeak = client.src === '/clients/color-logo.png';
-        const isSmsl = client.src === '/clients/SMSL_blackwhite_logo.png';
         const isWorkedSvj = !isPresent && isSvj;
         const isPresentWhiteTeak = isPresent && isWhiteTeak;
-        void isSmsl; // referenced for future use
 
         return (
             <div
                 className="flex items-center justify-center shrink-0"
                 style={{
-                    width: size === 'sm' ? '160px' : '260px',
-                    height: size === 'sm' ? '80px' : '120px',
+                    width: '180px',
+                    height: '100px',
                 }}
             >
                 <img
@@ -141,7 +139,7 @@ export default function Projects() {
                         <div
                             key={`${c.alt}-${i}`}
                             className="flex items-center justify-center"
-                            style={{ height: '60px' }}
+                            style={{ height: '70px' }}
                         >
                             <img
                                 src={c.src}
@@ -264,7 +262,7 @@ export default function Projects() {
                         <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10 " style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
                         <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10 " style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
                         <InfiniteSlider gap={20} speed={60} speedOnHover={25}>
-                            {clients.map((c) => <LogoCard key={c.alt} client={c} size="sm" />)}
+                            {clients.map((c) => <LogoCard key={c.alt} client={c} />)}
                         </InfiniteSlider>
                     </div>
 
@@ -290,7 +288,7 @@ export default function Projects() {
                             <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10 " style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
                             <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10 " style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
                             <InfiniteSlider gap={24} speed={55} speedOnHover={25}>
-                                {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} size="sm" isPresent />)}
+                                {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} isPresent />)}
                             </InfiniteSlider>
                         </div>
                     </div>

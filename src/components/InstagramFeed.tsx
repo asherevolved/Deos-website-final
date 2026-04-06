@@ -40,7 +40,7 @@ const brands: BrandConfig[] = [
             <img
                 src="/logo.png"
                 alt="Deos Originals"
-                className="object-contain max-h-28 md:max-h-36 w-auto"
+                className="object-contain h-44 md:h-52 w-auto"
                 loading="lazy"
             />
         ),
@@ -52,7 +52,7 @@ const brands: BrandConfig[] = [
             <img
                 src="/wedeos-logo.png"
                 alt="WeDeos Entertainment"
-                className="object-contain max-h-28 md:max-h-36 w-auto"
+                className="object-contain h-28 md:h-36 w-auto"
                 loading="lazy"
             />
         ),
@@ -108,24 +108,14 @@ export default function InstagramFeed() {
 
             {/* ── Brand columns ── */}
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2">
-                {brands.map((brand, i) => (
+                {brands.map((brand) => (
                     <div
                         key={brand.label}
-                        className={`brand-card flex flex-col items-center gap-10 md:gap-14 py-10 md:py-6 ${
-                            i === 0 ? 'md:border-r md:border-white/10' : ''
-                        } ${i > 0 && brands.length > 1 ? 'border-t border-white/10 md:border-t-0' : ''}`}
+                        className="brand-card flex flex-col items-center gap-10 md:gap-14 py-10 md:py-6"
                         style={{ opacity: 0 }}
                     >
-                        {/* Category label */}
-                        <span
-                            className="text-white text-xl md:text-2xl font-bold underline underline-offset-4 decoration-1 tracking-wide"
-                            style={{ fontFamily: 'var(--font-display)' }}
-                        >
-                            {brand.label}
-                        </span>
-
                         {/* Logo */}
-                        <div className="flex items-center justify-center" style={{ minHeight: '100px' }}>
+                        <div className="flex items-center justify-center h-44 md:h-52">
                             {brand.logoNode}
                         </div>
 
