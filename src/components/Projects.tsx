@@ -124,31 +124,39 @@ export default function Projects() {
             '/clients/Gokulam Logo 1 orange.png',
             '/clients/gokulam-logo.png',
             '/clients/LOUNGE29-LOGO.png',
+            '/clients/greeco-logo.png',
+            '/clients/pataka-logo.png',
+            '/clients/the-pearl.png',
+            '/clients/sunburnunion_vel5hwh0mj.png',
             '/clients/WhatsApp_Image_2026-03-27_at_3.51.54_PM-removebg-preview.png',
             '/clients/WhatsApp_Image_2026-03-27_at_3.49.58_PM-removebg-preview.png',
             '/clients/WhatsApp_Image_2026-03-24_at_4.11.56_PM-removebg-preview.png',
         ];
         return (
-            <div className="grid grid-cols-3 gap-4 py-2">
+            <div className="grid grid-cols-3 gap-3 py-2">
                 {items.map((c, i) => {
                     const isColor = colorLogos.includes(c.src);
                     const imgFilter = isColor
-                        ? 'brightness(1.1) contrast(1.1)'
+                        ? 'brightness(1.15) contrast(1.1)'
                         : 'brightness(0) invert(1)'; // make dark/greyscale logos white
                     return (
                         <div
                             key={`${c.alt}-${i}`}
                             className="flex items-center justify-center"
-                            style={{ height: '70px' }}
+                            style={{
+                                height: '80px',
+                                padding: '8px',
+                            }}
                         >
                             <img
                                 src={c.src}
                                 alt={c.alt}
                                 style={{
-                                    maxWidth: '100%',
-                                    maxHeight: '100%',
+                                    width: '100%',
+                                    height: '100%',
                                     objectFit: 'contain',
                                     filter: imgFilter,
+                                    display: 'block',
                                 }}
                                 loading="eager"
                             />
