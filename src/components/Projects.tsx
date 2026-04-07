@@ -89,10 +89,12 @@ export default function Projects() {
 
     /* ── Per-logo size overrides (scale multiplier) ── */
     const logoScale: Record<string, number> = {
+        '/clients/images-removebg-preview.png': 1.8,
         '/clients/pataka-logo.png': 0.65,
         '/clients/WhatsApp_Image_2026-03-27_at_3.49.58_PM-removebg-preview.png': 1.35, // Mumbai Chai
         '/clients/SVJ.png': 1.3, // Sri Vasavi
         '/clients/gokulam-logo.png': 0.7, // Gokulam (present)
+        '/clients/color-logo.png': 0.6, // White Teak (smaller)
     };
 
     /* ── Logo card shared render ── */
