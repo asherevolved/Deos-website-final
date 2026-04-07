@@ -22,7 +22,7 @@ const presentClients = [
     { src: '/clients/ElanBar-03.png', alt: 'Elan Bar' },
     { src: '/clients/gokulam-logo.png', alt: 'Gokulam' },
     { src: '/clients/RoyalBluColor.png', alt: 'Royal Blu' },
-    { src: '/clients/SMSL_blackwhite_logo.png', alt: 'SMSL' },
+    { src: '/clients/SMSLLogo.png', alt: 'SMSL' },
     { src: '/clients/WhatsApp_Image_2026-03-27_at_3.51.54_PM-removebg-preview.png', alt: 'Present Client 1' },
     { src: '/clients/WhatsApp_Image_2026-03-27_at_3.49.58_PM-removebg-preview.png', alt: 'Present Client 2' },
 ];
@@ -87,26 +87,36 @@ export default function Projects() {
         return () => ctx.revert();
     }, [isMobile]);
 
+    /* ── Per-logo size overrides (scale multiplier) ── */
+    const logoScale: Record<string, number> = {
+        '/clients/pataka-logo.png': 0.65,
+        '/clients/WhatsApp_Image_2026-03-27_at_3.49.58_PM-removebg-preview.png': 1.35, // Mumbai Chai
+        '/clients/SVJ.png': 1.3, // Sri Vasavi
+        '/clients/gokulam-logo.png': 0.7, // Gokulam (present)
+    };
+
     /* ── Logo card shared render ── */
     const LogoCard = ({ client, isPresent = false }: { client: typeof clients[0]; isPresent?: boolean }) => {
         const isSvj = client.src === '/clients/SVJ.png';
         const isWhiteTeak = client.src === '/clients/color-logo.png';
         const isWorkedSvj = !isPresent && isSvj;
         const isPresentWhiteTeak = isPresent && isWhiteTeak;
+        const scale = logoScale[client.src] ?? 1;
 
         return (
             <div
                 className="flex items-center justify-center shrink-0"
-                style={{
-                    width: '180px',
-                    height: '100px',
-                }}
+                style={{ width: '180px', height: '100px' }}
             >
                 <img
                     src={client.src}
                     alt={client.alt}
-                    className="max-w-full max-h-full object-contain select-none pointer-events-none"
+                    className="object-contain select-none pointer-events-none"
                     style={{
+                        width: `${scale * 100}%`,
+                        height: `${scale * 100}%`,
+                        maxWidth: '100%',
+                        maxHeight: '100%',
                         filter: isPresentWhiteTeak || isWorkedSvj ? 'brightness(0) invert(1)' : 'brightness(1.15) contrast(1.15)'
                     }}
                     loading="lazy"
@@ -152,8 +162,10 @@ export default function Projects() {
                                 src={c.src}
                                 alt={c.alt}
                                 style={{
-                                    width: '100%',
-                                    height: '100%',
+                                    width: `${(logoScale[c.src] ?? 1) * 100}%`,
+                                    height: `${(logoScale[c.src] ?? 1) * 100}%`,
+                                    maxWidth: '100%',
+                                    maxHeight: '100%',
                                     objectFit: 'contain',
                                     filter: imgFilter,
                                     display: 'block',
