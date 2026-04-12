@@ -74,7 +74,7 @@ export default function Projects() {
             tl.to(overlay, { opacity: 1, duration: 0.25, ease: 'power2.inOut' }, 0.6);
 
             // Phase 3: Dark background
-            tl.to(overlay, { backgroundColor: '#050505', duration: 0.3, ease: 'power2.inOut' }, 0.85);
+            tl.to(overlay, { backgroundColor: '#000000', duration: 0.3, ease: 'power2.inOut' }, 0.85);
 
             // Phase 4: Reveal clients panel
             tl.fromTo(reveal, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 1.15);
@@ -257,7 +257,7 @@ export default function Projects() {
             {/* Revealed: Clients We Worked With */}
             <div
                 ref={revealRef}
-                className="absolute inset-0 z-30 flex flex-col justify-start pt-28 md:pt-32 lg:pt-32 opacity-0 px-8 md:px-14 lg:px-20 overflow-visible"
+                className="absolute inset-0 z-30 flex flex-col justify-start pt-28 md:pt-32 lg:pt-32 opacity-0 px-8 md:px-14 lg:px-20 overflow-visible bg-[#000000]"
             >
                 <div className="max-w-7xl w-full mx-auto">
                     {/* Header */}
@@ -281,8 +281,8 @@ export default function Projects() {
 
                     {/* Single logo row */}
                     <div className="relative mb-8 rounded-sm">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10 " style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
-                        <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10 " style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
+                        <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10 " style={{ background: 'linear-gradient(to right, #000000, transparent)' }} />
+                        <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10 " style={{ background: 'linear-gradient(to left, #000000, transparent)' }} />
                         <InfiniteSlider gap={20} speed={60} speedOnHover={25}>
                             {clients.map((c) => <LogoCard key={c.alt} client={c} />)}
                         </InfiniteSlider>
@@ -307,8 +307,8 @@ export default function Projects() {
                         <div className="h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-gray-700 to-transparent mb-6" />
 
                         <div className="relative rounded-sm">
-                            <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10 " style={{ background: 'linear-gradient(to right, #050505, transparent)' }} />
-                            <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10 " style={{ background: 'linear-gradient(to left, #050505, transparent)' }} />
+                            <div className="pointer-events-none absolute inset-y-0 left-0 w-28 z-10 " style={{ background: 'linear-gradient(to right, #000000, transparent)' }} />
+                            <div className="pointer-events-none absolute inset-y-0 right-0 w-28 z-10 " style={{ background: 'linear-gradient(to left, #000000, transparent)' }} />
                             <InfiniteSlider gap={24} speed={55} speedOnHover={25}>
                                 {presentClients.map((c) => <LogoCard key={c.alt + '-present'} client={c} isPresent />)}
                             </InfiniteSlider>

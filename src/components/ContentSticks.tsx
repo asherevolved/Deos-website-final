@@ -91,7 +91,7 @@ export default function ContentSticks() {
     return (
         <section
             ref={sectionRef}
-            className="py-12 md:py-16 lg:py-20 bg-[var(--color-bg-deep)] relative grain-overlay"
+            className="py-12 md:py-16 lg:py-20 bg-black relative"
         >
             {/* Subtle glow */}
             <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[var(--color-primary)]/3 rounded-full blur-[300px] pointer-events-none" />

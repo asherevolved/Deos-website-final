@@ -44,7 +44,7 @@ export default function Footer() {
             id="contact"
             // Dark gray/black wrapper that pulls tightly over the pinned ImageCollage like a curtain
             // Removed rounded-t classes to prevent the background image from bleeding through the corners awkwardly
-            className="relative bg-[#0a0a0a] z-20 pt-16 md:pt-24 pb-12 md:pb-16 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]"
+            className="relative bg-[#111111] z-20 pt-16 md:pt-24 pb-12 md:pb-16 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]"
         >
             {/* The structural solid yellow box from the images (using DEOS theme #EAB308) */}
             <div 
@@ -52,12 +52,12 @@ export default function Footer() {
                 className="mx-3 md:mx-6 lg:mx-8 bg-[var(--color-primary)] rounded-[1rem] md:rounded-[1.5rem] p-4 md:p-6 lg:p-8 relative min-h-0 md:min-h-[600px] flex flex-col justify-between"
             >
                 {/* TOP PILL BAR */}
-                <div className="bg-[#050505] text-white rounded-[0.75rem] md:rounded-[1rem] flex justify-between items-center px-4 md:px-6 py-3 md:py-5">
+                <div className="bg-[#111111] text-white rounded-[0.75rem] md:rounded-[1rem] flex justify-between items-center px-4 md:px-6 py-3 md:py-5">
                     <div
                         className="flex items-center gap-1 uppercase tracking-tighter text-base md:text-2xl lg:text-3xl"
                         style={{ fontFamily: 'var(--font-display)' }}
                     >
-                        DEOS ORIGINALS<span className="text-[#EAB308] font-sans text-sm md:text-xl ml-1">{'<'}</span>
+                        DEOS ORIGINALS
                     </div>
                     
                     <a 
@@ -105,20 +105,20 @@ export default function Footer() {
                     {/* RIGHT COLUMN: CONTACT INFO & BACK TO TOP */}
                     <div className="w-full lg:w-2/5 flex flex-col justify-end text-[#1a1a1a] text-sm md:text-xl space-y-4 md:space-y-6 uppercase tracking-tighter pb-2 lg:pb-6" style={{ fontFamily: 'var(--font-display)' }}>
                         <div className="flex items-start gap-4 lg:gap-8">
-                            <span className="w-12 text-[#1a1a1a]" style={{ fontFamily: 'var(--font-display)' }}>H.Q.</span>
+                            <span className="w-24 text-[#1a1a1a]" style={{ fontFamily: 'var(--font-display)' }}>Office</span>
                             <span>Mysore, India</span>
                         </div>
                         <div className="flex items-start gap-4 lg:gap-8">
-                            <span className="w-12 text-[#1a1a1a]" style={{ fontFamily: 'var(--font-display)' }}>E.</span>
+                            <span className="w-24 text-[#1a1a1a]" style={{ fontFamily: 'var(--font-display)' }}>Email</span>
                             {/* Make email wrap nicely */}
                             <a href="mailto:deosoriginals@gmail.com" className="hover:opacity-60 transition-opacity break-all">
                                 DEOSORIGINALS@GMAIL.COM
                             </a>
                         </div>
                         <div className="flex items-start gap-4 lg:gap-8">
-                            <span className="w-12 text-[#1a1a1a]" style={{ fontFamily: 'var(--font-display)' }}>P.</span>
+                            <span className="w-24 text-[#1a1a1a]" style={{ fontFamily: 'var(--font-display)' }}>Contact</span>
                             <a href="tel:+919110851733" className="hover:opacity-60 transition-opacity break-all">
-                                9110851733 / +91 78925 72758
+                                +91 9110851733 / +91 78925 72758
                             </a>
                         </div>
                         <div className="flex items-center gap-4 lg:gap-8 pt-8 md:pt-12 cursor-pointer hover:opacity-60 transition-opacity" onClick={handleScrollToTop}>

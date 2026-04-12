@@ -66,13 +66,13 @@ export default function Navbar() {
                     {/* Desktop nav */}
                     <div className="hidden md:flex items-center gap-10">
                         {navItems.map((item) => (
-                            <a
+                            <button
                                 key={item}
-                                href={`#${item.toLowerCase()}`}
-                                className="text-[10px] uppercase tracking-[0.25em] text-gray-400 hover:text-white transition-colors duration-500 font-semibold"
+                                onClick={() => handleNavClick(item)}
+                                className="text-[10px] uppercase tracking-[0.25em] text-gray-400 hover:text-white transition-colors duration-500 font-semibold cursor-pointer bg-none border-none p-0"
                             >
                                 {item}
-                            </a>
+                            </button>
                         ))}
                     </div>
 

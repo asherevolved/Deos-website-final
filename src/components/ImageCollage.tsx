@@ -84,7 +84,7 @@ export default function ImageCollage() {
             {/* Dark gradient overlay for readability */}
             <div
                 ref={overlayRef}
-                className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent z-10"
+                className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-10"
             />
 
             {/* Optional centered text overlay */}

@@ -56,12 +56,15 @@ export default function ClientsSection() {
             Our Portfolio
           </span>
           <h2
-            className="text-[12vw] md:text-[9vw] lg:text-[7vw] leading-[0.85] uppercase text-white tracking-tighter"
+            className="text-[12vw] md:text-[9vw] lg:text-[7vw] leading-[0.85] uppercase text-white tracking-tighter mb-6"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Clients We{' '}
             <span className="text-outline-thick">Worked</span> With
           </h2>
+          <p className="text-sm md:text-base text-gray-400 max-w-2xl">
+            Even in the clients we worked with, we worked on our portfolio projects section
+          </p>
         </div>
       </div>
 

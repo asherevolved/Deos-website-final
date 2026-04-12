@@ -85,7 +85,7 @@ export default function Team() {
         <section
             ref={sectionRef}
             id="team"
-            className="relative bg-[var(--color-bg-deep)] overflow-hidden grain-overlay py-14 md:py-20 lg:py-24"
+            className="relative bg-black overflow-hidden py-14 md:py-20 lg:py-24"
         >
             {/* Header */}
             <div className="px-5 md:px-12 lg:px-24 max-w-7xl mx-auto relative z-[2]">
@@ -117,7 +117,7 @@ export default function Team() {
                             ref={(el) => { cardsRef.current[i] = el; }}
                             className="group cursor-pointer opacity-0"
                         >
-                            <div className="border border-gray-800 bg-[#0a0a0a] transition-all duration-700 group-hover:border-[var(--color-primary)]/40 relative overflow-hidden">
+                            <div className="border border-gray-800 bg-black transition-all duration-700 group-hover:border-[var(--color-primary)]/40 relative overflow-hidden">
                                 {/* Photo */}
                                 <div className="aspect-[3/4] overflow-hidden">
                                     <img

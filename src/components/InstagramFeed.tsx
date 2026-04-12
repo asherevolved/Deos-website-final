@@ -114,6 +114,14 @@ export default function InstagramFeed() {
                         className="brand-card flex flex-col items-center gap-10 md:gap-14 py-10 md:py-6"
                         style={{ opacity: 0 }}
                     >
+                        {/* Label */}
+                        <p
+                            className="text-white text-3xl md:text-5xl uppercase tracking-widest font-semibold -mb-4"
+                            style={{ fontFamily: 'var(--font-display)' }}
+                        >
+                            {brand.label}
+                        </p>
+
                         {/* Logo */}
                         <div className="flex items-center justify-center h-44 md:h-52">
                             {brand.logoNode}

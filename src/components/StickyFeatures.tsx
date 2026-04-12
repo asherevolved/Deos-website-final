@@ -106,7 +106,7 @@ export default function StickyFeatures() {
     return (
         <section
             ref={sectionRef}
-            className="relative bg-[var(--color-bg-deep)] min-h-screen"
+            className="relative bg-black min-h-screen"
         >
             <div className="grid grid-cols-1 lg:grid-cols-2 max-w-7xl mx-auto px-5 md:px-12 lg:px-24">
                 {/* Left: Sticky heading (only on desktop) */}

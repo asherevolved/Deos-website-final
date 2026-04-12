@@ -35,7 +35,7 @@ export default function Hero() {
             className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden grain-overlay pt-28 md:pt-32"
         >
             {/* Background */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#050505] to-[#080808]" />
+            <div className="absolute inset-0 bg-[#000000]" />
 
             {/* Main content */}
             <div className="relative z-[3] text-center px-4 max-w-7xl mx-auto">

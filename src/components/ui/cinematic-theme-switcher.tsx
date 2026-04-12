@@ -120,7 +120,7 @@ export default function CinematicThemeSwitcher() {
         className="relative flex h-[34px] w-[64px] items-center rounded-full p-[3px] transition-all duration-300 focus:outline-none cursor-pointer hover:shadow-lg"
         style={{
           background: isDark
-            ? 'radial-gradient(ellipse at top left, #1c1c1c 0%, #050505 40%, #000000 100%)'
+            ? 'radial-gradient(ellipse at top left, #1c1c1c 0%, #111111 40%, #000000 100%)'
             : 'radial-gradient(ellipse at top left, #ffffff 0%, #f1f5f9 40%, #cbd5e1 100%)',
           boxShadow: isDark
             ? `
