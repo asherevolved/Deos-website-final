@@ -10,6 +10,7 @@ import Projects from './components/Projects';
 import ContentSticks from './components/ContentSticks';
 import ImageCollage from './components/ImageCollage';
 import Team from './components/Team';
+import Location from './components/Location';
 import InstagramFeed from './components/InstagramFeed';
 import Footer from './components/Footer';
 
@@ -29,6 +30,7 @@ function App() {
         <ContentSticks />
         <InstagramFeed />
         <Team />
+        <Location />
         <ImageCollage />
         <Footer />
       </main>

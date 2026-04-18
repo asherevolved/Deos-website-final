@@ -106,7 +106,7 @@ export default function Footer() {
                     <div className="w-full lg:w-2/5 flex flex-col justify-end text-[#1a1a1a] text-sm md:text-xl space-y-4 md:space-y-6 uppercase tracking-tighter pb-2 lg:pb-6" style={{ fontFamily: 'var(--font-display)' }}>
                         <div className="flex items-start gap-4 lg:gap-8">
                             <span className="w-24 text-[#1a1a1a]" style={{ fontFamily: 'var(--font-display)' }}>Office</span>
-                            <span>Mysore, India</span>
+                            <span className="normal-case">No. 4930, 1st Floor, Kanakadasa Nagar,<br />Near Kautilya School, Dattagalli 3rd Stage,<br />Mysore - 570022</span>
                         </div>
                         <div className="flex items-start gap-4 lg:gap-8">
                             <span className="w-24 text-[#1a1a1a]" style={{ fontFamily: 'var(--font-display)' }}>Email</span>
