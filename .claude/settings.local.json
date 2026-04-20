@@ -8,7 +8,17 @@
       "Bash(npx tsc:*)",
       "Bash(npx vite:*)",
       "mcp__playwright__browser_navigate",
-      "mcp__playwright__browser_evaluate"
+      "mcp__playwright__browser_evaluate",
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(cp \"C:/Users/ADMIN/.claude/projects/c--Users-ADMIN-Desktop-new-deos-deos-app/45a616ec-1d14-4fde-97ae-72a7f6de4e6b/tool-results/webfetch-1776577365739-uj6cdp.bin\" /tmp/design.tar.gz)",
+      "Read(//c/tmp/**)",
+      "Bash(tar -xzf design.tar.gz)",
+      "Bash(mkdir -p /tmp/design_extract)",
+      "Read(//tmp/**)",
+      "Bash(tar -xzf \"C:/Users/ADMIN/.claude/projects/c--Users-ADMIN-Desktop-new-deos-deos-app/45a616ec-1d14-4fde-97ae-72a7f6de4e6b/tool-results/webfetch-1776577365739-uj6cdp.bin\")",
+      "Bash(cp /c/Users/ADMIN/.claude/projects/c--Users-ADMIN-Desktop-new-deos-deos-app/45a616ec-1d14-4fde-97ae-72a7f6de4e6b/tool-results/webfetch-1776577365739-uj6cdp.bin /tmp/design_extract/design.gz)",
+      "Bash(tar -xzf design.gz)",
+      "Bash(grep -Ev \"\\\\.\\(node|tmp|bin|log|dll|exe|mui|ses\\)$\")"
     ],
     "deny": [],
     "ask": []

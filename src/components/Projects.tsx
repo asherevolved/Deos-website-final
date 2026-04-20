@@ -143,6 +143,10 @@ export default function Projects() {
             '/clients/WhatsApp_Image_2026-03-27_at_3.51.54_PM-removebg-preview.png',
             '/clients/WhatsApp_Image_2026-03-27_at_3.49.58_PM-removebg-preview.png',
             '/clients/WhatsApp_Image_2026-03-24_at_4.11.56_PM-removebg-preview.png',
+            '/clients/MYSTUC_TAVERN_BANNER_5x6_page-0001-removebg-preview.png',
+            '/clients/images-removebg-preview.png',
+            '/clients/SMSLLogo.png',
+            '/clients/color-logo.png',
         ];
         return (
             <div className="grid grid-cols-3 gap-3 py-2">

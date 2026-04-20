@@ -13,12 +13,14 @@ import Team from './components/Team';
 import Location from './components/Location';
 import InstagramFeed from './components/InstagramFeed';
 import Footer from './components/Footer';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
   useLenis();
 
   return (
     <>
+      <LoadingScreen />
       <ScrollProgress />
       <Navbar />
       <main className="overflow-clip w-full">
