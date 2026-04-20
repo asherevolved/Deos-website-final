@@ -146,7 +146,6 @@ export default function Projects() {
             '/clients/MYSTUC_TAVERN_BANNER_5x6_page-0001-removebg-preview.png',
             '/clients/images-removebg-preview.png',
             '/clients/SMSLLogo.png',
-            '/clients/color-logo.png',
         ];
         return (
             <div className="grid grid-cols-3 gap-3 py-2">
