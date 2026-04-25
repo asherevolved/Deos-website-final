@@ -18,7 +18,20 @@
       "Bash(tar -xzf \"C:/Users/ADMIN/.claude/projects/c--Users-ADMIN-Desktop-new-deos-deos-app/45a616ec-1d14-4fde-97ae-72a7f6de4e6b/tool-results/webfetch-1776577365739-uj6cdp.bin\")",
       "Bash(cp /c/Users/ADMIN/.claude/projects/c--Users-ADMIN-Desktop-new-deos-deos-app/45a616ec-1d14-4fde-97ae-72a7f6de4e6b/tool-results/webfetch-1776577365739-uj6cdp.bin /tmp/design_extract/design.gz)",
       "Bash(tar -xzf design.gz)",
-      "Bash(grep -Ev \"\\\\.\\(node|tmp|bin|log|dll|exe|mui|ses\\)$\")"
+      "Bash(grep -Ev \"\\\\.\\(node|tmp|bin|log|dll|exe|mui|ses\\)$\")",
+      "Bash(curl -sI -L --max-time 30 https://deosoriginals.com)",
+      "Bash(curl -s --max-time 30 https://deosoriginals.com/robots.txt)",
+      "Bash(curl -s --max-time 30 https://deosoriginals.com/sitemap.xml)",
+      "Bash(curl -s --max-time 30 -L https://deosoriginals.com -o \"c:/Users/ADMIN/Desktop/new deos/deos-app/seo-audit-deosoriginals/homepage.html\")",
+      "Bash(curl -sI -L --max-time 20 https://www.deosoriginals.com/robots.txt)",
+      "Bash(curl -sL --max-time 20 https://www.deosoriginals.com/robots.txt)",
+      "Bash(curl -sI -L --max-time 20 https://www.deosoriginals.com/sitemap.xml)",
+      "Bash(curl -sL --max-time 20 https://www.deosoriginals.com/sitemap.xml)",
+      "Bash(curl -sL --max-time 20 https://www.deosoriginals.com/llms.txt -o /tmp/llms.txt)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(curl -sL --max-time 20 https://www.deosoriginals.com/ -o /tmp/www.html)",
+      "Bash(curl -sI --max-time 20 https://www.deosoriginals.com/)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' --max-time 15 https://www.deosoriginals.com__TRACKED_VAR__)"
     ],
     "deny": [],
     "ask": []

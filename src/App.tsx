@@ -20,7 +20,7 @@ function App() {
     <>
       <ScrollProgress />
       <Navbar />
-      <main className="overflow-clip w-full">
+      <main className="overflow-clip w-full" role="main">
         <Hero />
         <HorizontalMarquee />
         <WhatWeDo />

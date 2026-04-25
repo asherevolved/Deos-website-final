@@ -121,16 +121,21 @@ export default function Footer() {
                                 +91 9110851733 / +91 78925 72758
                             </a>
                         </div>
-                        <div className="flex items-center gap-4 lg:gap-8 pt-8 md:pt-12 cursor-pointer hover:opacity-60 transition-opacity" onClick={handleScrollToTop}>
+                        <a
+                            href="#"
+                            onClick={(e) => { e.preventDefault(); handleScrollToTop(); }}
+                            className="flex items-center gap-4 lg:gap-8 pt-8 md:pt-12 cursor-pointer hover:opacity-60 transition-opacity"
+                            aria-label="Go back to top"
+                        >
                             <span className="w-12 text-[#1a1a1a] flex items-center justify-start text-xl md:text-2xl">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
                                 </svg>
                             </span>
-                            <button className="uppercase tracking-tighter text-sm md:text-base">
+                            <span className="uppercase tracking-tighter text-sm md:text-base">
                                 Go Back To Top
-                            </button>
-                        </div>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>

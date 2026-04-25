@@ -36,43 +36,51 @@ export default function Navbar() {
         return () => { document.body.style.overflow = ''; };
     }, [menuOpen]);
 
-    const handleScrollTop = () => {
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+        e.preventDefault();
         setMenuOpen(false);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
-    const handleNavClick = (item: string) => {
-        setMenuOpen(false);
-        const el = document.getElementById(item.toLowerCase());
+        if (target === '#top') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+        const el = document.querySelector(target);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const navItems = ['About', 'Projects', 'Team', 'Contact'];
+    const navItems = [
+        { label: 'About', href: '#about' },
+        { label: 'Projects', href: '#projects' },
+        { label: 'Team', href: '#team' },
+        { label: 'Contact', href: '#contact' },
+    ];
 
     return (
         <>
             <nav
                 ref={navRef}
+                aria-label="Main navigation"
                 className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl"
             >
                 <div className="px-5 md:px-10 py-4 md:py-5 flex justify-between items-center">
-                    <button
-                        onClick={handleScrollTop}
+                    <a
+                        href="/"
+                        onClick={(e) => handleNavClick(e, '#top')}
                         className="cursor-pointer"
                     >
                         <img src="/logo.png" alt="Deos Originals" className="h-[72px] md:h-[90px] w-auto object-contain" />
-                    </button>
+                    </a>
 
                     {/* Desktop nav */}
                     <div className="hidden md:flex items-center gap-10">
                         {navItems.map((item) => (
-                            <button
-                                key={item}
-                                onClick={() => handleNavClick(item)}
-                                className="text-[10px] uppercase tracking-[0.25em] text-gray-400 hover:text-white transition-colors duration-500 font-semibold cursor-pointer bg-none border-none p-0"
+                            <a
+                                key={item.label}
+                                href={item.href}
+                                onClick={(e) => handleNavClick(e, item.href)}
+                                className="text-[10px] uppercase tracking-[0.25em] text-gray-400 hover:text-white transition-colors duration-500 font-semibold cursor-pointer"
                             >
-                                {item}
-                            </button>
+                                {item.label}
+                            </a>
                         ))}
                     </div>
 
@@ -115,9 +123,10 @@ export default function Navbar() {
             >
                 <div className="flex flex-col items-center gap-8">
                     {navItems.map((item, i) => (
-                        <button
-                            key={item}
-                            onClick={() => handleNavClick(item)}
+                        <a
+                            key={item.label}
+                            href={item.href}
+                            onClick={(e) => handleNavClick(e, item.href)}
                             className="text-2xl uppercase tracking-[0.15em] text-white font-bold cursor-pointer hover:text-[var(--color-primary)] transition-colors duration-300"
                             style={{
                                 fontFamily: 'var(--font-display)',
@@ -127,8 +136,8 @@ export default function Navbar() {
                                 transition: 'all 0.4s ease',
                             }}
                         >
-                            {item}
-                        </button>
+                            {item.label}
+                        </a>
                     ))}
                     <div
                         className="mt-4 flex flex-col items-center gap-8"
